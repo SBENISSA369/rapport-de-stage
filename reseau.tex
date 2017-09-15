@@ -26,12 +26,30 @@
 \newpage
 \section{Présentation de l’entreprise}
 \newpage
-\section{objectif du stage}
 \newpage
-\section{Etat de l'art}
 
+\section{objectif du stage}
+Le But de  stage était de concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.\newline
+Ce type d'application peut servir dans les domaines ou on veut appliquer de calcul sur des données privées.\newline
+Par exemple chaque jour on voit sortir des applications d'apprentissage automatique dans le domaine médical mais la question est qu'on peut fournir le meme servir en gardant la confidentialité sur les informations des patients.\newline
+La prémière étape durant la periode de stage l'objectif c'était de faire l'Etat de l'art sur les différents cryptosystème de chiffrerment homomorphe et de bien comprendre le concept de machine learning.\newline
+La deuxième étape le but c'était d'implementer des algorithmes de machine learning sur des données clair afin de concevoir un modèle et régarder les différents métriques qu'il faut prendre en compte pour analyser l'efficacité du modèle.\newline
+La dernière étape c'était pour implementer les memes algoritmes sur des données chiffrées et d'evaluer la différence par rapport au résultat obtenu a partir des algorithmes implementer dans la deuxième partie.\newline
+\section{Etat de l'art} 
 \subsection{chiffrement partiellement homomorphe}
-
+Un cryptosystème est considéré partiellement homomorphic s'il commute 
+\textit{definition : } On dira d’un cryptosystème est partiellement homomorphe 
+\subsection{chiffrement complètement homomorphe}
+\subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
+Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
+Avant de commencer à décrire les travaux effectués dans cette direction. Il est important de parler des différentes phases qui compose un algorithme d'apprentissage automatique.\newline
+Le machine learning se décompose en 2 étapes:\newline
+\underline{Une phase d’entraînement }:\newline on apprend sur une partie des données après choisir le modèle mathématique le plus adapté.\newline 
+\underline{Une phase d'inférence ou de validation} :\newline	 on teste sur la seconde partie de données et mésurer le taux de réussite de notre modèle .\newline
+Parmis les travaux on peut cité :\newline
+\textit{Cryptonets } : Dans ce projet on trouve l'application des réseaux de neurones sur des données chiffrée. \newline
+Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.    
+\textit{Biomedical Applications } :
 \newpage
 \section{chiffrement completement homomorphe}
 Le chiffrement homomorphe permet de réaliser des calculs sur des données chiffrées générant un résultat chiffré qui lorsqu'il est déchiffré, correspond au résultat des opérations effectuées sur le texte en clair. 
