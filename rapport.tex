@@ -45,7 +45,25 @@ On dit que $C$ est homomorphique par rapport a l'addition si : \newline
  $F(x_1) * F(x_2) = F(x_1 * x_2).$\newline
 
 Parmis les cryptosystème partiellement homomorphe on trouve :\newline
-\textit{RSA : }\newline
+\textit{RSA : } cryptosystème qui commute avec la multiplication\newline
+Procédure de génération de clés de chiffrement et de déchiffrement :
+\begin{enumerate}
+\item Choisir $p$ et $q$, deux nombres premiers distincts.
+\item calculer leur produit $n = pq$, appelé module de chiffrement.
+\item calculer $\phi(n) = (p - 1)(q -1)$ (c'est la valeur de l'indicatrice d'Euler en $n$).
+\item choisir un entier naturel e premier avec $\phi(n)$ et strictement inférieur à $\phi(n)$, appelé exposant de chiffrement.
+\item calculer l'entier naturel d, inverse de e modulo $\phi(n)$, et strictement inférieur à $\phi(n)$, appelé exposant de déchiffrement ; $d$ peut se calculer efficacement par l'algorithme d'Euclide étendu.
+\end{enumerate}
+Le couple (n,e) est la clé publique du chiffrement, alors que le nombre d est la clé privée.\newline
+Fonction de chiffrément :\newline 
+soit m un entier naturel strictement inférieur a n, alors le message chiffré sera :\newline
+$c \equiv m^e(mod\; n)$\newline
+Fonction de déchiffrément :\newline
+Pour déchiffré c en utilise la clé sécrète d :\newline
+$m \equiv m^d(mod\; n)$\newline
+Maintenant si on suppose qu'on deux message $c_1$ et $c_2$ telque :
+$c_1 \equiv m_1^e(mod\; n)$ et $c_2 \equiv m_2^e(mod\; n)$ \newline
+On voit bien que $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$
 \textit{ELGamel : }\newline
 \textit{Paillier : }\newline
 \subsection{chiffrement complètement homomorphe}
