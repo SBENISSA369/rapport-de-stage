@@ -34,63 +34,96 @@ Ce type d'application peut servir dans les domaines ou on veut appliquer de calc
 Par exemple chaque jour on voit sortir des applications d'apprentissage automatique dans le domaine médical mais la question est qu'on peut fournir le meme servir en gardant la confidentialité sur les informations des patients.\newline
 La prémière étape durant la periode de stage l'objectif c'était de faire l'Etat de l'art sur les différents cryptosystème de chiffrerment homomorphe et de bien comprendre le concept de machine learning.\newline
 La deuxième étape le but c'était d'implementer des algorithmes de machine learning sur des données clair afin de concevoir un modèle et régarder les différents métriques qu'il faut prendre en compte pour analyser l'efficacité du modèle.\newline
-La dernière étape c'était pour implementer les memes algoritmes sur des données chiffrées et d'evaluer la différence par rapport au résultat obtenu a partir des algorithmes implementer dans la deuxième partie.\newline
+La dernière étape c'était pour implementer les memes algoritmes sur des données chiffrées et d'evaluer la différence par rapport au résultat obtenu au partir des algorithmes implementer dans la deuxième partie.\newline
 \section{Etat de l'art} 
 \subsection{chiffrement partiellement homomorphe}
 \textit{definition : } On dit qu'un cryptosystème est partiellement homomorphe  s'il possède certaines caractéristiques algébriques qui le font commuter avec une opération mathématique, c'est-à-dire que le déchiffrement du résultat de cette opération sur des données chiffrées donne le même résultat que cette opération sur les données en clair. \newline
 Si on considère $C$ un cryptosystème, $(x_1, x_2, ............, x_n)$ l'ensemble de messages clairs, $(c_1, c_2, ..............., c_n)$ l'ensemble des messages chiffrés et $ F$ une fonction de chiffrement telque $F(x_n) = c_n$. \newline
 On dit que $C$ est homomorphique par rapport a l'addition si : \newline
- $F(x_1) + F(x_2) = F(x_1 + x_2).$\newline
+ $$F(x_1) + F(x_2) = F(x_1 + x_2).$$
  On dit que $C$ est homomorphique par rapport a la multiplication si : \newline
- $F(x_1) * F(x_2) = F(x_1 * x_2).$\newline
-
-Parmis les cryptosystème partiellement homomorphe on trouve :\newline
-\textit{RSA : } cryptosystème qui commute avec la multiplication\newline
-Procédure de génération de clés de chiffrement et de déchiffrement :
+ $$F(x_1) * F(x_2) = F(x_1 * x_2).$$
+Il existe de nombreux cryptosystèmes partiellement homomorphes parmis lesquels on trouve le RSA et le Paillier.%\newline
+%\textit{RSA : }
+\subsubsection{RSA :}\textit{Je modifie ce paragraphe}
+Le RSA est historiquement l'un des premiers  algorithme de cryptographie asymétrique. Décrit en 1978 par ses inventeurs Ron Rivest, Adi Shamir et Leonard Adleman (dont les initiales ont donné l'acronyme RSA) il est toujours largement utilisé pour l'échange de données sur internet. Le RSA est un cryptosystème qui commute avec la multiplication.\newline
+La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
 \begin{enumerate}
-\item Choisir $p$ et $q$, deux nombres premiers distincts.
-\item calculer leur produit $n = pq$, appelé module de chiffrement.
-\item calculer $\phi(n) = (p - 1)(q -1)$ (c'est la valeur de l'indicatrice d'Euler en $n$).
-\item choisir un entier naturel e premier avec $\phi(n)$ et strictement inférieur à $\phi(n)$, appelé exposant de chiffrement.
-\item calculer l'entier naturel d, inverse de e modulo $\phi(n)$, et strictement inférieur à $\phi(n)$, appelé exposant de déchiffrement ; $d$ peut se calculer efficacement par l'algorithme d'Euclide étendu.
+\item Choisir deux nombres premiers distincts,  $p$ et $q$ : $(p,q)$
+\item Calculer leur produit $n$, appelé module de chiffrement : $n = pq$
+\item Calculer $\phi(n)$, la valeur de l'indicatrice d'Euler en $n$ : $\phi(n) = (p - 1)(q -1)$.
+\item Choisir un entier naturel $e$ tel que $e$ et $\phi(n)$ sont  premier entre eux et $e$ est strictement inférieur à $\phi(n)$. $e$ est appelé exposant de chiffrement :
+\item Calculer l'entier naturel $d$, appelé exposant de déchiffrement:
+  $d$ est défini comme l'inverse de $e$ modulo $\phi(n)$, et $d$ est strictement inférieur à $\phi(n)$:
+$d=\frac{1}{mod\phi(n)}$ et $d<\phi(n)$
+  \textit{\underline{Remarque} : $d$ peut se calculer efficacement par l'algorithme d'Euclide étendu}.
 \end{enumerate}
-Le couple (n,e) est la clé publique du chiffrement, alors que le nombre d est la clé privée.\newline
-Fonction de chiffrément :\newline 
-soit m un entier naturel strictement inférieur a n, alors le message chiffré sera :\newline
-$c \equiv m^e(mod\; n)$\newline
-Fonction de déchiffrément :\newline
-Pour déchiffré c en utilise la clé sécrète d :\newline
-$m \equiv m^d(mod\; n)$\newline
-Maintenant si on suppose qu'on deux message $c_1$ et $c_2$ telque :
+Le couple $(n,e)$ est la clé publique du chiffrement, alors que le nombre $d$ est la clé privée.\newline
+Chiffrément :\newline 
+soit $m$ un entier naturel strictement inférieur à $n$, alors le message chiffré sera :\newline
+$$c \equiv m^e(mod\; n)$$
+Déchiffrement :\newline
+Pour déchiffrer $c$ on utilise la clé sécrète $d$ :\newline
+$$m \equiv m^d(mod\; n)$$
+Maintenant, on suppose que l'on a deux messages $c_1$ et $c_2$ tels que :
 $c_1 \equiv m_1^e(mod\; n)$ et $c_2 \equiv m_2^e(mod\; n)$ \newline
-On voit bien que $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$
-\textit{ELGamel : }\newline
-\textit{Paillier : }\newline
+Alors, on a $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$\newline
+\newline
+%\textit{Paillier : }
+\subsubsection{Paillier : }
+
+Le cryptosystème de Paillier est un homomorphisme additif basé sur un algorithme asymétrique et conçut par Pascal Paillier en 1999.\newline
+La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
+\begin{enumerate}
+\item Choisir deux nombres premiers de grande taille, indépendants et aléatoiresù : $p$   et $q$.
+\item La clé publique $sk = p*q$ et la clé sécrète $sk = \phi(n) = (p - 1)(q -1)$.\textit{elles s'appellent toutes les 2 sk???????????????}
+\end{enumerate}
+Chiffrement :\newline
+Soit $m$ un entier naturel strictement inférieur à $n$, on choisi aléatoirement un entier $r$ plus petit que $n$ :\newline
+$$c = (1+N)^m * r^N\;mod\; N^2$$
+Déchiffrement:\newline
+
+On a $c \equiv r^N\;mod\; N$
 \subsection{chiffrement complètement homomorphe}
-\subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
-Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
-Avant de commencer à décrire les travaux effectués dans cette direction. Il est important de parler des différentes phases qui compose un algorithme d'apprentissage automatique.\newline
-Le machine learning se décompose en 2 étapes:\newline
-\underline{Une phase d’entraînement }:\newline on apprend sur une partie des données après choisir le modèle mathématique le plus adapté.\newline 
-\underline{Une phase d'inférence ou de validation} :\newline	 on teste sur la seconde partie de données et mésurer le taux de réussite de notre modèle .\newline
-Parmis les travaux on peut cité :\newline
-\textit{Cryptonets } :  \newline
-Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.\newline
-Le jeux des données qui a été utilisé pour cette demonstration est MNIST c'est une base de données de chiffres écrits à la main. C'est un jeu de données très utilisé en apprentissage automatique.\newline
-Cryptonets a réalisé un taux de réussite de 99 \% et prend 570 secondes pour fournir une réponse par exemple.\newline
-\textit{Biomedical Applications } :
-\newpage
-\section{chiffrement completement homomorphe}
-Le chiffrement homomorphe permet de réaliser des calculs sur des données chiffrées générant un résultat chiffré qui lorsqu'il est déchiffré, correspond au résultat des opérations effectuées sur le texte en clair. 
-\subsection*{les réseaux euclidiens}
-\subsubsection*{Généralités sur les réseaux euclidiens}
-\subsubsection*{\textcolor{red}{L'algorithme LLL}}
-\subsubsection*{Réseau et cryptographie}
-\subsection*{cryptosysteme completement homomorphe}
-\subsubsection*{cryptosysteme BGV}
-\subsubsection*{\textit{Schéma de  Fan et Vercauteren}}
-Dans cette partie le vais présenter le schéma de Fan et Vercauteren\newline
-Dans cette partie je vais présenter le schéma de FV qui a été utiliser dans SEAL avec quelques modifications.\newline
+\textit{definition :}
+Un cryptosystème est dit homomorphe si une opération algébrique efectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
+En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma totalement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
+\subsubsection{Généralités sur les réseaux euclidiens}
+\textit{ Definition 1:} Un réseau euclidien est un sous-groupe discret additif de $R^n$.\newline
+\newline
+\textit{ Definition 2:} une base $b= (b_1,b_2,...........,b_n)$  d’un réseau euclidien $L$ dans $R^n$ est un ensemble de $n$ vecteurs 
+linéairement indépendants. Les combinaisons linéaires entières des vecteurs de cette base forment $L$.
+$$L = \{x\in R^n, tq x = \sum_{i=1}^{n} x_ib_i, x_i\in Z\}$$
+La Figure suivante montre un exemple d'un réseau euclidien de dimension 3 \textit{wikipédia}.\newline
+\newline
+\newline    
+\hspace*{5cm}{}\includegraphics[width=7cm]{reseau.jpg}
+\newline
+\newline
+Les deux problèmes difficiles utilisés par Gentry pour son cryptosystème sont les suivants : \newline
+\textit{Définition :} \textbf{Shortest Vector Problem (SVP):}\newline
+étant donnés un réseau $L$ et une base $B$ de $L$, trouver le vecteur non nul le plus court du réseau (au sens de sa norme)\newline
+\newline
+\newline
+
+\hspace*{3.5cm}{}\includegraphics[width=7cm]{svp.png}\newline
+\newline
+\hspace*{3.5cm} En bleu la base donnée du réseau, en rouge le vecteur le plus.\newline
+\newline
+\textit{Définition} \textbf{Closest Vector Problem (CVP):}\newline
+étant donnés un réseau $L$, une base $B$ de $L$ et un vecteur $v$, trouver le vecteur le plus proche de $v$ appartenant à $L$\newline
+\newline
+\hspace*{5cm}{}\includegraphics[width=7cm]{cvp.png}\newline
+\newline
+\hspace*{3.5cm} En bleu la base donnée du réseau, en vert le vecteur donné,\newline
+\hspace*{3.5cm} en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.\newline
+\newline
+Après les travaux de Gentry en 2009, quelques cryptosystèmes ont vu le jour s’inspirant de celui d’origine basé sur les réseaux euclidiens.\newline
+\textbf{Le cryptosystème Brakerski-Gentry-Vaikunthanathan (BGV)}\newline
+Le cryptosystème BGV pour Zvika Brakerski, Craig Gentry et Vinod Vaikuntanathan consiste en une redéfinition du système de Gentry en
+utilisant d’autres problèmes : Decisional Learning With Error (dLWE), Decisional Ring Learning With Error (dRLWE) et Decisional General Learning With Error (dGLWE). C’est ce schéma qui est implanté dans HElib(avec pas mal d’améliorations aujourd’hui)
+\textbf{Le cryptosystème de Fan et Vercautreen (FV)}\newline
+\newline
 \newline
 \vspace{100\baselineskip}
 \newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
@@ -150,7 +183,19 @@ Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
  $$c_1^{'} = c_1 + \sum_{i=1}^{l}evk[i][1]c_2^{(i)} .$$
  et donc le produit de deux chifrés sera $(c_0^{'}, c_1^{'}).$
   \end{description}
-
+\subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
+Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
+Avant de commencer à décrire les travaux effectués dans cette direction. Il est important de parler des différentes phases qui compose un algorithme d'apprentissage automatique.\newline
+Le machine learning se décompose en 2 étapes:\newline
+\underline{Une phase d’entraînement }:\newline on apprend sur une partie des données après choisir le modèle mathématique le plus adapté.\newline 
+\underline{Une phase d'inférence ou de validation} :\newline	 on teste sur la seconde partie de données et mésurer le taux de réussite de notre modèle .\newline
+Parmis les travaux on peut cité :\newline
+\textit{Cryptonets } :  \newline
+Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.\newline
+Le jeux des données qui a été utilisé pour cette demonstration est MNIST c'est une base de données de chiffres écrits à la main. C'est un jeu de données très utilisé en apprentissage automatique.\newline
+Cryptonets a réalisé un taux de réussite de 99 \% et prend 570 secondes pour fournir une réponse par exemple.\newline
+\textit{Biomedical Applications } :
+\newpage
 \newpage
 \section{Apprentissage automatique}
 \subsection*{definition}
@@ -168,9 +213,9 @@ $x=(x_1, x_2,.............,x_p).$\newline
 où p est le nombre de coordonnées aussi appelé nombre d’attributs.\newline
 En machine learning on a deux types des données :\newline
 \newline
-\textbf{Les données labélisées :} on donne à l’algorithme un certain nombre d’exemples (input) sur lesquels apprendre, et ces exemples sont « labellisés », c’est-à-dire qu’on leur associe un résultat désiré (output). L’algorithme a alors pour tâche de trouver la loi qui permet de trouver l’output en fonction des inputs.\newline
+\textbf{Les données labélisées :} on donne à l’algorithme un certain nombre d’exemples sur lesquels l'algorithme  apprend, et ces exemples sont « labellisés », c’est-à-dire qu’on leur associe un résultat désiré . L’algorithme a alors pour tâche de trouver la loi qui permet de trouver la sortie en fonction des entrées.\newline
 \newline 
-\textbf{Les données non-labélisée :} définition2.
+\textbf{Les données non-labellisée :} définition2.
 \subsection{La décision} 
 On distingue deux types des décisions pour les algorithmes en machine learning. \newline
 \textbf{Sorties catégorisées ou discrètes :} le nombre de sorties possible est fini. Dans ce cas, les sorties possibles sont appelées classes\newline
@@ -178,23 +223,24 @@ On distingue deux types des décisions pour les algorithmes en machine learning.
 \hspace*{5cm}{}\includegraphics[scale=1]{classifictation_vs_regression.png}
 \subsection{types d'apprentissages}
 il y a deux pricipaux systèmes d'apprentissage qui définissent les différents modes de fonctionnement de machine learning.\newline
-\title L’apprentissage supervisé ou analyse discriminatoire\newline
-\title L’apprentissage non-supervisé ou clustering
-\subsection{Algorithmes utilisés}
-\newpage
+\title{\textbf{L’apprentissage supervisé ou analyse discriminatoire}}\newline
+L'objectif de la classification supervisée est principalement de définir des règles permettant de classer des objets dans des classes
+à partir de variables qualitatives caractérisant ces objets. Les méthodes s'étendent souvent à des variables $Y$ quantitatives (régression).
+On dispose au départ d'un échantillon dit d'apprentissage dont les classes sont connu. Cet échantillon est utilisé pour l'apprentissage des règles de classement.\newline 
+\title{\textbf{L’apprentissage non-supervisé ou clustering}}\newline
+Le clustering consiste à regrouper les données en groupes homogènes appelés classes ou clusters, de sorte que les éléments à l’intérieur d’une même classe soient similaires, et les éléments appartenant à deux classes différentes soient différents.
 \section{Implementation}
+La deuxième partie de mon stage a été consacré a l'implementation de quelques algorithmes d'apprentissage automatique.\newline
+Au début l'implementation s'effectue sur des données clairs pour bien comprendre les différents paramètres qu'il faut prendre en compte pour evaluer la qualité du modèl, et par la suite l'imlementation des memes algorithmes sur des données chiffrées et comparer les résultats obtenu. \newline      
 \subsection*{Regression Lineaire}
 La regression linéaire est une modélisation linéaire qui permet de fournir des prédictions a partir des informations provenant du passé, 
 Dans ce modèle on établi une relation entre une ou plusieurs variables explicatives $(x_1,x_2,..........,x_n)$ et une variable expliquée souvent noté par $Y$.\newline
 La fonction d'evaluation dans la régression lineaire est la suivante : \newline
 $$Y =h_{\theta}(x) = \theta^T = \sum_{i=1}^{n} \theta_ix_i $$\newline
-ou $\theta_j (j=1................n)$ ces sont les paramètres du modèl qu'on devra estimer au moyen de techniques statistques parmis  lesquelles la descente de gradient stochastique.\newline
-\newline
-\subsubsection*{Algorithme de descente du gradient stochastique \textit{(stochastic gradient descent)}}.\newline
+ou $\theta_j (j=1................n)$ ces sont les paramètres du modèl qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
+\subsubsection{Algorithme de descente du gradient stochastique \textit{(stochastic gradient descent)}}.\newline
 Cet algorithme permet de minimiser la fonction d'erreur (cost function) qui s'écrit sous la forme : \newline
 $$J(\theta) = \dfrac{1}{2m}\sum_{i=1}^{m} (h_{\theta}^{x^{(i)}} - y^{(i)})^2$$\newline  
-avec: \newline
-$$h_{\theta}(x) = \theta^T = \sum \theta_ix_i $$
 \newline
 La descente de gradient stochastique premet de choisir les paramètres du modèl $\theta_i$ afin de minimiser la fonction d'erreur.\newline
 Algorithme : \newline
@@ -205,9 +251,7 @@ Algorithme : \newline
 $$\theta_j := \theta_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
 \hspace*{1cm}\}\newline
 \} 
-
-
-\subsection*{Regression Logistique}
+\subsection{Regression Logistique}
 La regression logistique est une méthode statistique pour analyser un ensemble des données dans lequel il existe une ou plusieurs variables indépendantes qui servent a déterminer un résultat.\newline
 L'objectif de la régression logistique est de trouver le meilleur modèle pour décrire le lien entre les vraiables explicatives et la variable dépondante ou la variable expliquée.\newline
 Dans ce qui suit, nous noterons $Y$ la variable à prédire (variable expliquée), $X = (X_1, X_2, ..., X_J)$ les variables prédictives (variables explicatives). \newline
@@ -224,14 +268,14 @@ $$w_j := w_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})
 $$ b := b - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})$$
 \hspace*{1cm}\}\newline
 \} 
-\subsection*{SEAL:Simple Encrypted Arithmetic Library}
-\subsubsection*{présentation de la bibliotheque}
-SEAL est une bibliothèque de chiffrement homomorphe qui est en cours de developpement par des chercheurs en cryptogreaphie a microsoft elle fait partie de logiciel libre, elle est écrit en C++11.
-Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. 
+\subsection{SEAL:Simple Encrypted Arithmetic Library}
+\subsubsection{présentation de la bibliotheque}
+SEAL est une bibliothèque de chiffrement homomorphe qui est en cours de developpement par des chercheurs en cryptographie a microsoft elle fait partie de logiciel libre, elle est écrit en C++11.
+Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. \newline
+ \newline
 \textbf{différence entre l'implementation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
-En pratique, certaines opérations sont implementé d'une facon différente qui est plus générale.\newline
+Dans SEAL, certaines opérations sont implementées d'une facon différente qui est plus générale par rapport au cryptosystème FV.\newline
 Dans cette partie on traite cette différence en détail.\newline
-
 \textbf{\textit{message chiffré$(Ciphertext)$, message clair$(plaintext)$ dans SEAL.}}\newline
 Les messages clairs dans SEAL c'est sont des élément de $R_t$ comme dans le cryptosysème Fan et Vercautreen,
 Dans la version 2.2 les messages clairs sont présenter dans une classe Plaintext .\newline
