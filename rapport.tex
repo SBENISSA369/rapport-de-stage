@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,12pt]{report}
     \usepackage[utf8]{inputenc}
     \usepackage[T1]{fontenc} 
     \usepackage[francais]{babel}
@@ -43,7 +43,7 @@ On dit que $C$ est homomorphique par rapport a l'addition si : \newline
  $$F(x_1) + F(x_2) = F(x_1 + x_2).$$
  On dit que $C$ est homomorphique par rapport a la multiplication si : \newline
  $$F(x_1) * F(x_2) = F(x_1 * x_2).$$
-Il existe de nombreux cryptosystèmes partiellement homomorphes parmis lesquels on trouve le RSA et le Paillier.%\newline
+Il existe de nombreux cryptosystèmes partiellement homomorphes parmis lesquels on trouve RSA et le Paillier.%\newline
 %\textit{RSA : }
 \subsubsection{RSA :}\textit{Je modifie ce paragraphe}
 Le RSA est historiquement l'un des premiers  algorithme de cryptographie asymétrique. Décrit en 1978 par ses inventeurs Ron Rivest, Adi Shamir et Leonard Adleman (dont les initiales ont donné l'acronyme RSA) il est toujours largement utilisé pour l'échange de données sur internet. Le RSA est un cryptosystème qui commute avec la multiplication.\newline
@@ -87,22 +87,22 @@ On a $c \equiv r^N\;mod\; N$
 \subsection{chiffrement complètement homomorphe}
 \textit{definition :}
 Un cryptosystème est dit homomorphe si une opération algébrique efectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
-En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma totalement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
+En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
 \subsubsection{Généralités sur les réseaux euclidiens}
 \textit{ Definition 1:} Un réseau euclidien est un sous-groupe discret additif de $R^n$.\newline
 \newline
 \textit{ Definition 2:} une base $b= (b_1,b_2,...........,b_n)$  d’un réseau euclidien $L$ dans $R^n$ est un ensemble de $n$ vecteurs 
 linéairement indépendants. Les combinaisons linéaires entières des vecteurs de cette base forment $L$.
 $$L = \{x\in R^n, tq x = \sum_{i=1}^{n} x_ib_i, x_i\in Z\}$$
-La Figure suivante montre un exemple d'un réseau euclidien de dimension 3 \textit{wikipédia}.\newline
+La Figure suivante montre un exemple d'un réseau euclidien de dimension 3 \textit{(wikipédia)}.\newline
 \newline
 \newline    
 \hspace*{5cm}{}\includegraphics[width=7cm]{reseau.jpg}
 \newline
 \newline
-Les deux problèmes difficiles utilisés par Gentry pour son cryptosystème sont les suivants : \newline
+Dans un réseau, des problèmes naturels se posent, comme la recherche d’un vecteur court, ou la recherche du point le plus proche d’un point donné: \newline
 \textit{Définition :} \textbf{Shortest Vector Problem (SVP):}\newline
-étant donnés un réseau $L$ et une base $B$ de $L$, trouver le vecteur non nul le plus court du réseau (au sens de sa norme)\newline
+Etant donné une base $B$ d’un sous réseau $L$ de $Z^n$, trouver un vecteur non nul de $L$ le plus court possible pour la norme euclidienne.\newline
 \newline
 \newline
 
@@ -111,13 +111,17 @@ Les deux problèmes difficiles utilisés par Gentry pour son cryptosystème sont
 \hspace*{3.5cm} En bleu la base donnée du réseau, en rouge le vecteur le plus.\newline
 \newline
 \textit{Définition} \textbf{Closest Vector Problem (CVP):}\newline
-étant donnés un réseau $L$, une base $B$ de $L$ et un vecteur $v$, trouver le vecteur le plus proche de $v$ appartenant à $L$\newline
+Etant donné une base $B$ d’un réseau $L$ de $Z^n$ et un vecteur $v \in Q^n$ , trouver le vecteur de $L$ le plus proche de $v$ pour la norme euclidienne.\newline
 \newline
 \hspace*{5cm}{}\includegraphics[width=7cm]{cvp.png}\newline
 \newline
 \hspace*{3.5cm} En bleu la base donnée du réseau, en vert le vecteur donné,\newline
 \hspace*{3.5cm} en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.\newline
 \newline
+Pour ces deux problèmes, trouver la solution est en général difficile sauf si l’on dispose d’une "bonne" base, c’est à dire une base "assez" courte et "assez" orthogonale. La difficulté du problème SVP permet de s’assurer que la clé privée ne peut pas être trouvée facilement. Quant au problème CVP, sa difficulté permet de s’assurer que le bruit d’un chiffré n’est pas calculable donc qu’il est difficile de trouver le texte clair correspondant.\newline
+Ainsi Gentry propose le schéma suivant :\newline
+\fbox{\parbox{\textwidth}{blablabla\\
+blabla}}
 Après les travaux de Gentry en 2009, quelques cryptosystèmes ont vu le jour s’inspirant de celui d’origine basé sur les réseaux euclidiens.\newline
 \textbf{Le cryptosystème Brakerski-Gentry-Vaikunthanathan (BGV)}\newline
 Le cryptosystème BGV pour Zvika Brakerski, Craig Gentry et Vinod Vaikuntanathan consiste en une redéfinition du système de Gentry en
