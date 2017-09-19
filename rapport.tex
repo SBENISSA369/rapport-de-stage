@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{report}
+    
     \usepackage[utf8]{inputenc}
     \usepackage[T1]{fontenc} 
     \usepackage[francais]{babel}
@@ -8,7 +9,7 @@
     \usepackage{color}
     \usepackage{hyperref}
     \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{mathrsfs}
+    \usepackage{mathrsfs}
     \title{Application de chiffrement homomorphe a l'apprentissage automatique}
 
 \author{BENISSA Sami\quad:\quad Université Paris 8}
@@ -16,27 +17,51 @@
 
 \date{8 septembre 2017}
 \begin{document}
-%\begin{figure}
-%\includegraphics[scale=1]{paris_8.png} 
-% \end{figure}
 \maketitle
-\section{Remerciements}
+\chapter*{Remerciements}
 \newpage
-\section{Introduction}
-\newpage
-\section{Présentation de l’entreprise}
-\newpage
-\newpage
+\renewcommand{\chaptername}{}
+%\renewcommand{\contentsname}{sommaires}
+\tableofcontents
 
-\section{objectif du stage}
+\newpage
+%\part{Partie 1}
+\chapter*{Introduction}
+\newpage
+\chapter*{Présentation de l’entreprise}
+\href{http://jolibrain.com/}{Jolibrain} est une jeune entreprise inovante et toulousaine dont le noyau est constitué de ``vétérans'' de l'Intelligence Articielle (IA) et du Web et d'autour duquel gravite un réseau d'experts.
+Jolibrain a à coeur d'apporter des solutions efficaces à des problèmes concrets.
+
+Jolibrain met au point des logiciels haute performance incluant les dernières avancée en matière d'IA. Les logiciels Jolibrain sont utilisés aussi bien chez de grands groupes que par des start up. Jolibrain regroupe en son sein l'expertise en  Machine Learning, Deep Learning, Reinforcement Learning, Stochastic Optimization, Search Enginesengin de recherche, system P2P et encore plus.
+
+Jolibrain est fondé sur le logiciel libre. Les valeurs véhiculée par Jolibrain sont la créativité, la collaboration, le  partage et l'apprentissage. La majorité de la production est disponible publiquement et Open Source.
+
+Les projet et produits de Jolibrain sont les suivants :
+\begin{itemize}
+\item   Service en Deep Learning :
+  Jolibrain sont les auteurs de l'API  et du serveurOpen Source Deeplearning \href{https://github.com/beniz/deepdetect}{Deep Detect}.
+\item Art: l'exposition Regognition de la Tate Gallery à Londre utilise un code Jolibrain.
+\item
+Cyber-securité: de grands groupes utilisent du code jolibrain pour la détection de malware et d'anomalies dans leurs logs.
+\item
+Contenu et médias: De grand groupes aussi bien que des start uop utilise des produits Jolibrain pour le filtrage et la modération de contenu.
+\item
+Images et recherche : Certains e-shopsmarchands en ligne mais aussi des agence spatiale utilisent jolibrain and aerospace agencies search and recommend visual elements running our pipeline pour la recherche et la recommandation.
+\item
+High tech et hardware : certaines start up du Deep Learning utilise le code Jolibrain pour leurs services cloud.
+\end{itemize}
+
+\newpage
+\newpage
+\chapter*{objectif du stage}
 Le But de  stage était de concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.\newline
 Ce type d'application peut servir dans les domaines ou on veut appliquer de calcul sur des données privées.\newline
 Par exemple chaque jour on voit sortir des applications d'apprentissage automatique dans le domaine médical mais la question est qu'on peut fournir le meme servir en gardant la confidentialité sur les informations des patients.\newline
 La prémière étape durant la periode de stage l'objectif c'était de faire l'Etat de l'art sur les différents cryptosystème de chiffrerment homomorphe et de bien comprendre le concept de machine learning.\newline
 La deuxième étape le but c'était d'implementer des algorithmes de machine learning sur des données clair afin de concevoir un modèle et régarder les différents métriques qu'il faut prendre en compte pour analyser l'efficacité du modèle.\newline
 La dernière étape c'était pour implementer les memes algoritmes sur des données chiffrées et d'evaluer la différence par rapport au résultat obtenu au partir des algorithmes implementer dans la deuxième partie.\newline
-\section{Etat de l'art} 
-\subsection{chiffrement partiellement homomorphe}
+\chapter*{Etat de l'art} 
+\section{chiffrement partiellement homomorphe}
 \textit{definition : } On dit qu'un cryptosystème est partiellement homomorphe  s'il possède certaines caractéristiques algébriques qui le font commuter avec une opération mathématique, c'est-à-dire que le déchiffrement du résultat de cette opération sur des données chiffrées donne le même résultat que cette opération sur les données en clair. \newline
 Si on considère $C$ un cryptosystème, $(x_1, x_2, ............, x_n)$ l'ensemble de messages clairs, $(c_1, c_2, ..............., c_n)$ l'ensemble des messages chiffrés et $ F$ une fonction de chiffrement telque $F(x_n) = c_n$. \newline
 On dit que $C$ est homomorphique par rapport a l'addition si : \newline
@@ -45,7 +70,7 @@ On dit que $C$ est homomorphique par rapport a l'addition si : \newline
  $$F(x_1) * F(x_2) = F(x_1 * x_2).$$
 Il existe de nombreux cryptosystèmes partiellement homomorphes parmis lesquels on trouve RSA et le Paillier.%\newline
 %\textit{RSA : }
-\subsubsection{RSA :}\textit{Je modifie ce paragraphe}
+\subsection{RSA :}\textit{Je modifie ce paragraphe}
 Le RSA est historiquement l'un des premiers  algorithme de cryptographie asymétrique. Décrit en 1978 par ses inventeurs Ron Rivest, Adi Shamir et Leonard Adleman (dont les initiales ont donné l'acronyme RSA) il est toujours largement utilisé pour l'échange de données sur internet. Le RSA est un cryptosystème qui commute avec la multiplication.\newline
 La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
 \begin{enumerate}
@@ -70,7 +95,7 @@ $c_1 \equiv m_1^e(mod\; n)$ et $c_2 \equiv m_2^e(mod\; n)$ \newline
 Alors, on a $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$\newline
 \newline
 %\textit{Paillier : }
-\subsubsection{Paillier : }
+\subsection{Paillier : }
 
 Le cryptosystème de Paillier est un homomorphisme additif basé sur un algorithme asymétrique et conçut par Pascal Paillier en 1999.\newline
 La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
@@ -84,53 +109,77 @@ $$c = (1+N)^m * r^N\;mod\; N^2$$
 Déchiffrement:\newline
 
 On a $c \equiv r^N\;mod\; N$
-\subsection{chiffrement complètement homomorphe}
-\textit{definition :}
-Un cryptosystème est dit homomorphe si une opération algébrique efectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
+\section{chiffrement complètement homomorphe}
+\subsection {Définition }
+Un cryptosystème est dit homomorphe si une opération algébrique effectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
 En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
-\subsubsection{Généralités sur les réseaux euclidiens}
-\textit{ Definition 1:} Un réseau euclidien est un sous-groupe discret additif de $R^n$.\newline
+\subsection{Généralités sur les réseaux euclidiens}
+\textit{ Définition 1:} Un réseau euclidien est un sous-groupe discret additif de $R^n$.\newline
 \newline
-\textit{ Definition 2:} une base $b= (b_1,b_2,...........,b_n)$  d’un réseau euclidien $L$ dans $R^n$ est un ensemble de $n$ vecteurs 
+\textit{ Définition 2:} une base $b= (b_1,b_2,...........,b_n)$  d’un réseau euclidien $L$ dans $R^n$ est un ensemble de $n$ vecteurs 
 linéairement indépendants. Les combinaisons linéaires entières des vecteurs de cette base forment $L$.
-$$L = \{x\in R^n, tq x = \sum_{i=1}^{n} x_ib_i, x_i\in Z\}$$
-La Figure suivante montre un exemple d'un réseau euclidien de dimension 3 \textit{(wikipédia)}.\newline
+$$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
 \newline
 \newline    
-\hspace*{5cm}{}\includegraphics[width=7cm]{reseau.jpg}
-\newline
-\newline
+
+\begin{figure}[h!]\begin{center}
+    \includegraphics[width=5cm]{reseau.jpg}
+    \caption{un exemple d'un réseau euclidien de dimension 3 .}
+    \label{fig:reseau}
+  \end{center}
+  \end{figure}
 Dans un réseau, des problèmes naturels se posent, comme la recherche d’un vecteur court, ou la recherche du point le plus proche d’un point donné: \newline
 \textit{Définition :} \textbf{Shortest Vector Problem (SVP):}\newline
 Etant donné une base $B$ d’un sous réseau $L$ de $Z^n$, trouver un vecteur non nul de $L$ le plus court possible pour la norme euclidienne.\newline
 \newline
 \newline
-
-\hspace*{3.5cm}{}\includegraphics[width=7cm]{svp.png}\newline
-\newline
-\hspace*{3.5cm} En bleu la base donnée du réseau, en rouge le vecteur le plus.\newline
-\newline
+\begin{figure}[h!]\begin{center}
+    \includegraphics[width=5cm]{svp.png}
+    \caption{En bleu la base donnée du réseau, en rouge le vecteur le plus court.}
+    \label{fig:svp}
+  \end{center}
+  \end{figure}
+  \newpage
 \textit{Définition} \textbf{Closest Vector Problem (CVP):}\newline
 Etant donné une base $B$ d’un réseau $L$ de $Z^n$ et un vecteur $v \in Q^n$ , trouver le vecteur de $L$ le plus proche de $v$ pour la norme euclidienne.\newline
 \newline
-\hspace*{5cm}{}\includegraphics[width=7cm]{cvp.png}\newline
 \newline
-\hspace*{3.5cm} En bleu la base donnée du réseau, en vert le vecteur donné,\newline
-\hspace*{3.5cm} en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.\newline
-\newline
+\begin{figure}[h!]\begin{center}
+    \includegraphics[width=5cm]{cvp.png}
+    \caption{En bleu la base donnée du réseau, en vert le vecteur donné,en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.}
+    \label{fig:cvp}
+  \end{center}
+  \end{figure}
+
 Pour ces deux problèmes, trouver la solution est en général difficile sauf si l’on dispose d’une "bonne" base, c’est à dire une base "assez" courte et "assez" orthogonale. La difficulté du problème SVP permet de s’assurer que la clé privée ne peut pas être trouvée facilement. Quant au problème CVP, sa difficulté permet de s’assurer que le bruit d’un chiffré n’est pas calculable donc qu’il est difficile de trouver le texte clair correspondant.\newline
 Ainsi Gentry propose le schéma suivant :\newline
-\fbox{\parbox{\textwidth}{blablabla\\
-blabla}}
+\vspace{100\baselineskip}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newline
+\textbf{Gentry.KeyGen($\lambda$) :}\newline soit $R$ un anneau : $R$ = $\bigslant{\pmb{\mathbb{Z}}[X]}{f(x)}$, avec $f(x)$ un polynome unitaire de degré $n$ irredictible, soit $I$ un idéal dans $R$, c'est à dire un réseau $I\,\subset\,Z^n$ avec la donnée d'une base $B_I$ : $\bigslant{\pmb{\mathbb{Z}}^n}{B_I} = P(B_I) =\{P_i\}$ est l’espace des textes clairs,avec $P(B_I)$ le parallélépipède associé à cet espace.
+Chaque entité choisit un idéal $J$ avec la contrainte $I + J = R$, ainsi que 2 bases $B^{S_k}_J$ (bonne base), $B^{P_k}_J$ (mauvaise base).
+Soit $D$ une distribution donnée ajoutant du bruit au texte clair donné.\newline
+Soit $p(B^{S_k}_J) = \{\sum_{i=1}^{n}x_ib_i, x_i\in[-1/2, 1/2]\}$ l’ensemble des points du réseau contenus dans le parallélépipède défini par la base $B^{Sk}_J$ et centré à l’origine.\newline
+La clé publique est $R$,$B_I$,$B^{Pk}_J$ et la clé privée est $B^{Sk}_J$ .\newline
+\textbf{Gentry.Encrypt($R$,$B_I$,$B^{Pk}_J$,$\Pi$) :}\newline
+Soit $\Pi$ le message clair à chiffrer.
+On lui ajoute du bruit $i$ selon la distribution $D$ $\; : \; \Pi + i \leftarrow \Pi$.\newline
+Le chiffré est : $\psi \leftarrow ( \Pi + i  )\; mod\; B^{Pk}_J$\newline
+(on soustrait itérativement à $\Pi + i$  des vecteurs de la base $B^{Pk}_J$ jusqu’à ce que le résultat soit dans le parallélépipède $P(B^{Pk}_J))$.\newline
+\textbf{Gentry.Decrypt($B^{Sk}_J,\psi$):}
+     
 Après les travaux de Gentry en 2009, quelques cryptosystèmes ont vu le jour s’inspirant de celui d’origine basé sur les réseaux euclidiens.\newline
 \textbf{Le cryptosystème Brakerski-Gentry-Vaikunthanathan (BGV)}\newline
 Le cryptosystème BGV pour Zvika Brakerski, Craig Gentry et Vinod Vaikuntanathan consiste en une redéfinition du système de Gentry en
 utilisant d’autres problèmes : Decisional Learning With Error (dLWE), Decisional Ring Learning With Error (dRLWE) et Decisional General Learning With Error (dGLWE). C’est ce schéma qui est implanté dans HElib(avec pas mal d’améliorations aujourd’hui)
+\newpage
 \textbf{Le cryptosystème de Fan et Vercautreen (FV)}\newline
 \newline
 \newline
-\vspace{100\baselineskip}
-\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+%\vspace{100\baselineskip}
+%\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\begin{figure}[h!]
+\begin{center}
 \begin{tabular}{|c|c|c|}
 
 \hline
@@ -160,14 +209,18 @@ $w$ & Base dans laquel les messages chiffré durant la relinearization & 12 \\
 \hline
 
 \end{tabular}
+\end{center}
+\caption{Différent paramètres utilisées dans le schéma de FV}
+\end{figure}
 \newline
+
 \textbf{\textit{ Espace de texte clair .}}\newline
 
 L'espace de message clair est $R_t$ c'est-à-dire des polynômes de degré inférieur à n avec des coefficients modulo t. on utilise également la structure de l'anneau $R_t$, par exemple, un produit de deux polynômes en texte clair deviennent le produit de deux polynômes avec $x^n = -1$.\newline
 Si on veut chiffrer une information on doit passer par un processus d'encodage, par exemple, si on veut chiffrer un entier ce dernier doit etre transformer en un polynome de $R_t$. le processus d'encodage et de décodage sera détaillé plus tard.\newline 
 \textbf{\textit{ Espace de texte chiffré .}}\newline
 Les messages chiffrés dans le schéma de FV ces sont des vecteurs  des polynomés de taille au mois égale a deux, et qui grandissent en taille avec la multiplication et qui va étre détailler au moment de présenter le processus de chiffrement. 
-\subsection*{Algorithme}
+\section{Algorithme}
 Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
  \begin{description}
  \item[SecretKeyGen$(\lambda)$:]  on choisit aléatoirement s dans $R_2$ et on prend $sk=s$.
@@ -187,23 +240,9 @@ Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
  $$c_1^{'} = c_1 + \sum_{i=1}^{l}evk[i][1]c_2^{(i)} .$$
  et donc le produit de deux chifrés sera $(c_0^{'}, c_1^{'}).$
   \end{description}
-\subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
-Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
-Avant de commencer à décrire les travaux effectués dans cette direction. Il est important de parler des différentes phases qui compose un algorithme d'apprentissage automatique.\newline
-Le machine learning se décompose en 2 étapes:\newline
-\underline{Une phase d’entraînement }:\newline on apprend sur une partie des données après choisir le modèle mathématique le plus adapté.\newline 
-\underline{Une phase d'inférence ou de validation} :\newline	 on teste sur la seconde partie de données et mésurer le taux de réussite de notre modèle .\newline
-Parmis les travaux on peut cité :\newline
-\textit{Cryptonets } :  \newline
-Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.\newline
-Le jeux des données qui a été utilisé pour cette demonstration est MNIST c'est une base de données de chiffres écrits à la main. C'est un jeu de données très utilisé en apprentissage automatique.\newline
-Cryptonets a réalisé un taux de réussite de 99 \% et prend 570 secondes pour fournir une réponse par exemple.\newline
-\textit{Biomedical Applications } :
-\newpage
-\newpage
 \section{Apprentissage automatique}
 \subsection*{definition}
-L'apprentissage automatique (machine learning en anglais) est une discipline consacré a l'analyse des données. cette discipline nous permet de créer des connaissances automatiques a partir des données brutes, cela consciste a la mise en place des algorithmes (ou modèle) qui vont etre exploiter pour prendre des décisions.\newline
+L'apprentissage automatique (machine learning en anglais) est une discipline consacrée à l'analyse des données. cette discipline nous permet de créer des connaissances automatiques a partir des données brutes, cela consciste a la mise en place des algorithmes (ou modèle) qui vont etre exploiter pour prendre des décisions.\newline
 le schéma suivant montre le mode de fonctionnement d'un modèle en machine learning.\newline
 \hspace*{4cm}\includegraphics[scale=1]{m_learning.png} 
  \begin{enumerate}
@@ -233,16 +272,32 @@ L'objectif de la classification supervisée est principalement de définir des r
 On dispose au départ d'un échantillon dit d'apprentissage dont les classes sont connu. Cet échantillon est utilisé pour l'apprentissage des règles de classement.\newline 
 \title{\textbf{L’apprentissage non-supervisé ou clustering}}\newline
 Le clustering consiste à regrouper les données en groupes homogènes appelés classes ou clusters, de sorte que les éléments à l’intérieur d’une même classe soient similaires, et les éléments appartenant à deux classes différentes soient différents.
-\section{Implementation}
+
+\section{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
+Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
+Avant de commencer à décrire les travaux effectués dans cette direction. Il est important de parler des différentes phases qui compose un algorithme d'apprentissage automatique.\newline
+Le machine learning se décompose en 2 étapes:\newline
+\underline{Une phase d’entraînement }:\newline on apprend sur une partie des données après choisir le modèle mathématique le plus adapté.\newline 
+\underline{Une phase d'inférence ou de validation} :\newline	 on teste sur la seconde partie de données et mésurer le taux de réussite de notre modèle .\newline
+Parmis les travaux on peut cité :\newline
+\textit{Cryptonets \cite{1gilad2016cryptonets} } :  \newline
+Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.\newline
+Le jeux des données qui a été utilisé pour cette demonstration est MNIST c'est une base de données de chiffres écrits à la main. C'est un jeu de données très utilisé en apprentissage automatique.\newline
+Cryptonets a réalisé un taux de réussite de 99 \% et prend 570 secondes pour fournir une réponse par exemple.\newline
+\textit{ \cite{dowlin2017manual} } :\newline
+
+\newpage
+\newpage
+\chapter*{Implementation}
 La deuxième partie de mon stage a été consacré a l'implementation de quelques algorithmes d'apprentissage automatique.\newline
 Au début l'implementation s'effectue sur des données clairs pour bien comprendre les différents paramètres qu'il faut prendre en compte pour evaluer la qualité du modèl, et par la suite l'imlementation des memes algorithmes sur des données chiffrées et comparer les résultats obtenu. \newline      
-\subsection*{Regression Lineaire}
+\section {Regression Lineaire}
 La regression linéaire est une modélisation linéaire qui permet de fournir des prédictions a partir des informations provenant du passé, 
 Dans ce modèle on établi une relation entre une ou plusieurs variables explicatives $(x_1,x_2,..........,x_n)$ et une variable expliquée souvent noté par $Y$.\newline
 La fonction d'evaluation dans la régression lineaire est la suivante : \newline
 $$Y =h_{\theta}(x) = \theta^T = \sum_{i=1}^{n} \theta_ix_i $$\newline
 ou $\theta_j (j=1................n)$ ces sont les paramètres du modèl qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
-\subsubsection{Algorithme de descente du gradient stochastique \textit{(stochastic gradient descent)}}.\newline
+\subsection{Algorithme de descente du gradient stochastique \textit{(stochastic gradient descent)}}.\newline
 Cet algorithme permet de minimiser la fonction d'erreur (cost function) qui s'écrit sous la forme : \newline
 $$J(\theta) = \dfrac{1}{2m}\sum_{i=1}^{m} (h_{\theta}^{x^{(i)}} - y^{(i)})^2$$\newline  
 \newline
@@ -254,8 +309,8 @@ Algorithme : \newline
 \hspace*{1cm}\textit{pour j=1 jusqu'à m}\{
 $$\theta_j := \theta_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
 \hspace*{1cm}\}\newline
-\} 
-\subsection{Regression Logistique}
+
+\section{Regression Logistique}
 La regression logistique est une méthode statistique pour analyser un ensemble des données dans lequel il existe une ou plusieurs variables indépendantes qui servent a déterminer un résultat.\newline
 L'objectif de la régression logistique est de trouver le meilleur modèle pour décrire le lien entre les vraiables explicatives et la variable dépondante ou la variable expliquée.\newline
 Dans ce qui suit, nous noterons $Y$ la variable à prédire (variable expliquée), $X = (X_1, X_2, ..., X_J)$ les variables prédictives (variables explicatives). \newline
@@ -272,8 +327,8 @@ $$w_j := w_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})
 $$ b := b - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})$$
 \hspace*{1cm}\}\newline
 \} 
-\subsection{SEAL:Simple Encrypted Arithmetic Library}
-\subsubsection{présentation de la bibliotheque}
+\section{SEAL:Simple Encrypted Arithmetic Library}
+\subsection{présentation de la bibliotheque}
 SEAL est une bibliothèque de chiffrement homomorphe qui est en cours de developpement par des chercheurs en cryptographie a microsoft elle fait partie de logiciel libre, elle est écrit en C++11.
 Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. \newline
  \newline
@@ -321,46 +376,9 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
  \item[Evaluator::square :] elevation puissance 2,
  \item[Evaluator::exponentiate :] Elévation d'un message chiffré à une puissance qui est un nombre entier,
   \end{description}
-
-\newpage
-\textbf{BIBLIOGRAPHIE}\newline
-\newline 
-\scriptsize
-[1]{
-auteurs = {Nathan Dowlin, Ran Gilad-Bachrach, Kim Laine, Kristin Lauter, Michael Naehrig, john Wernsing  },
-titre = {CryptoNets: Applying Neural Networks to Encrypted Datawith High Throughput and Accuracy},
-lien= {https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/CryptonetsTechReport.pdf .}}
-\newline
-\newline
-{[2]{
-auteurs = {Nathan Dowlin, Ran Gilad-Bachrach, Kim Laine, Kristin Lauter, Michael Naehrig, john Wernsing  },
-titre = {manual for using homomorphic encryption for bioinformatics},
-lien= {https://www.microsoft.com/en-us/research/wp-content/uploads/2015/11/ManualHE.pdf.}}}
-\newline
-\newline
-{[3]{
-auteur = {J.-P. DELAHAYE},
-titre = {Pour la science :numéro 456},
-date= {Octobre 2015 .}}}
-\newline
-\newline
-{[4]{
-auteur = {Dr. Jason Brownlee},
-titre = {machine learning mastery},
-lien= {https://machinelearningmastery.com .}}}
-\newline
-\newline
-{[5]{
-titre = {openclassroom for machine learning},
-lien= {http://openclassroom.stanford.edu .}}}
-\newline
-\newline
-[6]{
-auteurs = {Liam Morris,Department of Computer Science,Rochester Institute of Technology, Rochester, New York},
-titre = {Analysis of Partially and Fully Homomorphic Encryption},
-date= {10 Mai 2013}}
-\newline
-\newline
+  \newpage
+\bibliographystyle{unsrt}
+\bibliography{/home/benissa/Bureau/rapport-de-stage/biblio-rapport.bib}
 
 
 
