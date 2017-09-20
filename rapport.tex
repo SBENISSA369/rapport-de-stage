@@ -32,7 +32,7 @@
 \href{http://jolibrain.com/}{Jolibrain} est une jeune entreprise inovante et toulousaine dont le noyau est constitué de ``vétérans'' de l'Intelligence Articielle (IA) et du Web et d'autour duquel gravite un réseau d'experts.
 Jolibrain a à coeur d'apporter des solutions efficaces à des problèmes concrets.
 
-Jolibrain met au point des logiciels haute performance incluant les dernières avancée en matière d'IA. Les logiciels Jolibrain sont utilisés aussi bien chez de grands groupes que par des start up. Jolibrain regroupe en son sein l'expertise en  Machine Learning, Deep Learning, Reinforcement Learning, Stochastic Optimization, Search Enginesengin de recherche, system P2P et encore plus.
+Jolibrain met au point des logiciels haute performance incluant les dernières avancées en matière d'IA. Les logiciels Jolibrain sont utilisés aussi bien chez de grands groupes que par des start up. Jolibrain regroupe en son sein l'expertise en  Machine Learning, Deep Learning, Reinforcement Learning, Stochastic Optimization, Search Enginesengin de recherche, system P2P et encore plus.
 
 Jolibrain est fondé sur le logiciel libre. Les valeurs véhiculée par Jolibrain sont la créativité, la collaboration, le  partage et l'apprentissage. La majorité de la production est disponible publiquement et Open Source.
 
@@ -55,7 +55,7 @@ High tech et hardware : certaines start up du Deep Learning utilise le code Joli
 \section{Introduction}
 \subsection{Contexte : Big data et intelligence artificielle (IA)}
 \subsection{Problématique : éthique et confidentialité}
-\subsection{objectif du stage}
+\subsection{Objectif du stage}
 Le But de  stage était de concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.\newline
 Ce type d'application peut servir dans les domaines ou on veut appliquer de calcul sur des données privées.\newline
 Par exemple chaque jour on voit sortir des applications d'apprentissage automatique dans le domaine médical mais la question est qu'on peut fournir le meme servir en gardant la confidentialité sur les informations des patients.\newline
@@ -74,7 +74,7 @@ On dit que $C$ est homomorphique par rapport a l'addition si : \newline
 Il existe de nombreux cryptosystèmes partiellement homomorphes parmis lesquels on trouve RSA et le Paillier.%\newline
 %\textit{RSA : }
 
-\paragraph{RSA :}\textit{Je modifie ce paragraphe}
+\paragraph{RSA :}
 Le RSA est historiquement l'un des premiers  algorithme de cryptographie asymétrique. Décrit en 1978 par ses inventeurs Ron Rivest, Adi Shamir et Leonard Adleman (dont les initiales ont donné l'acronyme RSA) il est toujours largement utilisé pour l'échange de données sur internet. Le RSA est un cryptosystème qui commute avec la multiplication.\newline
 La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
 \begin{enumerate}
@@ -88,7 +88,7 @@ $d$ peut se calculer efficacement par l'algorithme d'Euclide étendu.
 \end{enumerate}
 Le couple $(n,e)$ est la clé publique du chiffrement, alors que le nombre $d$ est la clé privée.\newline
 Chiffrément :\newline 
-soit $m$ un entier naturel strictement inférieur à $n$, alors le message chiffré sera :\newline
+soit $m$ un entier naturel strictement inférieur à $n$, alors le message chiffré $c$ sera :\newline
 $$c \equiv m^e(mod\; n)$$
 Déchiffrement :\newline
 Pour déchiffrer $c$ on utilise la clé sécrète $d$ :\newline
@@ -102,7 +102,7 @@ Alors, on a $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$\newline
 Le cryptosystème de Paillier est un homomorphisme additif basé sur un algorithme asymétrique et conçut par Pascal Paillier en 1999.\newline
 La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
 \begin{enumerate}
-\item Choisir deux nombres premiers de grande taille, indépendants et aléatoiresù : $p$   et $q$.
+\item Choisir deux nombres premiers de grande taille, indépendants et aléatoires : $p$   et $q$.
 \item La clé publique $sk = p*q$ et la clé sécrète $pk = \phi(n) = (p - 1)(q -1)$.\end{enumerate}
 Chiffrement :\newline
 Soit $m$ un entier naturel strictement inférieur à $n$, on choisi aléatoirement un entier $r$ plus petit que $n$ :\newline
@@ -199,17 +199,17 @@ Retourner $m \xleftarrow{}{} (\;\langle c,s\rangle \;mod\;q)\;mod \;2$
     \hline
     $t$ & coefficient modulaire dans l'éspace de messages chiffrés\\
     \hline
-    $n$ & Une puissance de 2\\
+    $n$ & une puissance de 2\\
     \hline
     $(x^{n}+1)$ & polynôme de degré n\\
     \hline
-    $R$ & L'anneau $\bigslant{\pmb{\mathbb{Z}}[X]}{(x^{n}+1)}$\\
+    $R$ & l'anneau $\bigslant{\pmb{\mathbb{Z}}[X]}{(x^{n}+1)}$\\
     \hline
-    $R_a$ & L'anneau $\bigslant{\pmb{\mathbb{Z_a}}[X]}{(x^{n}+1)}$ avec des coefficients reduit modulo a\\
+    $R_a$ & l'anneau $\bigslant{\pmb{\mathbb{Z_a}}[X]}{(x^{n}+1)}$ avec des coefficients reduit modulo a\\
     \hline
-    $w$ & Base dans laquel les éléments de messages chiffré sont décompsé durant la rélinearisation\\
+    $w$ & base dans laquel les éléments de messages chiffré sont décompsé durant la rélinearisation\\
     \hline
-    $\lambda$ & Paramètre de sécurité\\
+    $\lambda$ & paramètre de sécurité\\
     \hline
     $\Delta$ & le quotient $\lfloor\dfrac{q}{t}\rfloor$\\
     \hline
@@ -221,11 +221,11 @@ Retourner $m \xleftarrow{}{} (\;\langle c,s\rangle \;mod\;q)\;mod \;2$
   \end{table}
 
 
-\textbf{\textit{ Espace de texte clair .}}\newline
+\paragraph{ Espace de texte clair .}
 
-L'espace de message clair est $R_t$ c'est-à-dire des polynômes de degré inférieur à n avec des coefficients modulo t. on utilise également la structure de l'anneau $R_t$, par exemple, un produit de deux polynômes en texte clair deviennent le produit de deux polynômes avec $x^n = -1$.\newline
-Si on veut chiffrer une information on doit passer par un processus d'encodage, par exemple, si on veut chiffrer un entier ce dernier doit etre transformer en un polynome de $R_t$. le processus d'encodage et de décodage sera détaillé plus tard.\newline 
-\textbf{\textit{ Espace de texte chiffré .}}\newline
+L'espace de message clair est $R_t$ c'est-à-dire des polynômes de degré inférieur à $n$ avec des coefficients modulo $t$. On utilise également la structure de l'anneau $R_t$, par exemple, un produit de deux polynômes en texte clair deviennent le produit de deux polynômes avec $x^n = -1$.\newline
+Si on veut chiffrer une information on doit passer par un processus d'encodage, par exemple, si on veut chiffrer un entier ce dernier doit être transformer en un polynôme de $R_t$. Le processus d'encodage et de décodage sera détaillé plus tard.\newline 
+\paragraph{ Espace de texte chiffré .}
 Les messages chiffrés dans le schéma de FV ces sont des vecteurs  des polynomés de taille au mois égale a deux, et qui grandissent en taille avec la multiplication et qui va étre détailler au moment de présenter le processus de chiffrement. 
 \textit{Algorithme}
 Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
@@ -249,19 +249,25 @@ Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
  et donc le produit de deux chifrés sera $(c_0^{'}, c_1^{'}).$
   \end{description}
 \subsection{Apprentissage automatique}
-\subsubsection{definition}
-L'apprentissage automatique (machine learning en anglais) est une discipline consacrée à l'analyse des données. cette discipline nous permet de créer des connaissances automatiques a partir des données brutes, cela consciste a la mise en place des algorithmes (ou modèle) qui vont etre exploiter pour prendre des décisions.\newline
-le schéma suivant montre le mode de fonctionnement d'un modèle en machine learning.\newline
-\hspace*{4cm}\includegraphics[scale=1]{m_learning.png} 
- \begin{enumerate}
+\subsubsection{Définition}
+L'apprentissage automatique (machine learning en anglais) est une discipline consacrée à l'analyse des données. cette discipline nous permet de créer des connaissances automatiques à partir des données brutes, cela consciste à la mise en place des algorithmes (ou modèle) qui vont etre exploiter pour prendre des décisions.\newline
+Le schéma suivant montre le mode de fonctionnement d'un modèle en machine learning.\newline
+\begin{figure}[h!]\begin{center}
+    \includegraphics[width=5cm]{m_learning.png}
+    \caption{mode de fonctionnement d'un modèle en machine learning}
+    \label{fig:m_learning}
+  \end{center}
+  \end{figure}
+
+  \begin{enumerate}
  \item a partir des données on construit le modèle.
  \item Le modèle permet de prendre des décisions.
  \item On se sert du modèle sur de nouvelles données afin de prendre des décisions.
  \end{enumerate}
 \subsubsection{Les données}
-les données sont appelées échantillons, en machine learning ils sont souvent présenter sous fourme des vecteurs.\newline
+Les données sont appelées échantillons, en machine learning ils sont souvent présenter sous fourme des vecteurs.\newline
 $x=(x_1, x_2,.............,x_p).$\newline
-où p est le nombre de coordonnées aussi appelé nombre d’attributs.\newline
+où $p$ est le nombre de coordonnées aussi appelé nombre d’attributs.\newline
 En machine learning on a deux types des données :\newline
 \newline
 \textbf{Les données labélisées :} on donne à l’algorithme un certain nombre d’exemples sur lesquels l'algorithme  apprend, et ces exemples sont « labellisés », c’est-à-dire qu’on leur associe un résultat désiré . L’algorithme a alors pour tâche de trouver la loi qui permet de trouver la sortie en fonction des entrées.\newline
@@ -271,8 +277,15 @@ En machine learning on a deux types des données :\newline
 On distingue deux types des décisions pour les algorithmes en machine learning. \newline
 \textbf{Sorties catégorisées ou discrètes :} le nombre de sorties possible est fini. Dans ce cas, les sorties possibles sont appelées classes\newline
 \textbf{Sorties non-catégorisées ou continues :} le nombre de sorties possible est infini dont la sortie de l'algorithme y est dans $R$ .\newline
+\begin{figure}[h!]\begin{center}
+    \includegraphics[width=5cm]{classifictation_vs_regression.png}
+    \caption{En bleu la base donnée du réseau, en vert le vecteur donné,en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.}
+    \label{fig:cvp}
+  \end{center}
+  \end{figure}
+
 \hspace*{5cm}{}\includegraphics[scale=1]{classifictation_vs_regression.png}
-\subsubsection{types d'apprentissages}
+\subsubsection{Types d'apprentissages}
 il y a deux pricipaux systèmes d'apprentissage qui définissent les différents modes de fonctionnement de machine learning.\newline
 \title{\textbf{L’apprentissage supervisé ou analyse discriminatoire}}\newline
 L'objectif de la classification supervisée est principalement de définir des règles permettant de classer des objets dans des classes
@@ -301,7 +314,7 @@ Dans ce modèle on établi une relation entre une ou plusieurs variables explica
 La fonction d'evaluation dans la régression lineaire est la suivante : \newline
 $$Y =h_{\theta}(x) = \theta^T = \sum_{i=1}^{n} \theta_ix_i $$\newline
 ou $\theta_j (j=1................n)$ ces sont les paramètres du modèl qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
-\subsubsection{Algorithme de descente du gradient stochastique \textit{(stochastic gradient descent)}}.\newline
+\subsubsection{Algorithme de descente de gradient stochastique \textit{(stochastic gradient descent)}}.\newline
 Cet algorithme permet de minimiser la fonction d'erreur (cost function) qui s'écrit sous la forme : \newline
 $$J(\theta) = \dfrac{1}{2m}\sum_{i=1}^{m} (h_{\theta}^{x^{(i)}} - y^{(i)})^2$$\newline  
 \newline
@@ -322,9 +335,9 @@ Dans le cadre de la régression logistique binaire, la variable $Y$ prend deux m
 La fonction de prédiction dans la régression logistique est la suivante :\newline
 $$h_{w,b}(x)=\dfrac{1}{1 + exp(-w^T x - b)}$$
 ou $w_j$ : ces sont les paramètres du modèle.\newline
-Pour l'estimation des paramètrs du modèle, on utilise l'algorithme de la descente de gradient stochastique qui sert a minimiser la fonction d'erruer :\newline
+Pour l'estimation des paramètrs du modèle, on utilise l'algorithme de la descente de gradient stochastique qui sert a minimiser la fonction d'erreur :\newline
 $$J(w,b) = \dfrac{1}{m}(\sum_{i=1}^{m}-y^{(i)}log(h_{w,b}(x^{(i)}))-(1-y^{(i)})log(1 - h_{w,b}(x^{(i)}))).$$\newline 
-L'implementation de l'algorithme de la descente de gradient stochastique se fait de la meme façon que la régression linéaire.\newline
+L'implémentation de l'algorithme de la descente de gradient stochastique se fait de la meme façon que la régression linéaire.\newline
 \textit{répéter}\{\newline 
 \hspace*{1cm}\textit{pour j=1 jusqu'à m}\{
 $$w_j := w_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
@@ -336,8 +349,8 @@ $$ b := b - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})$$
 SEAL est une bibliothèque de chiffrement homomorphe qui est en cours de developpement par des chercheurs en cryptographie a microsoft elle fait partie de logiciel libre, elle est écrit en C++11.
 Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. \newline
  \newline
-\textbf{différence entre l'implementation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
-Dans SEAL, certaines opérations sont implementées d'une facon différente qui est plus générale par rapport au cryptosystème FV.\newline
+\textbf{différence entre l'implémentation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
+Dans SEAL, certaines opérations sont implémentées d'une facon différente qui est plus générale par rapport au cryptosystème FV.\newline
 Dans cette partie on traite cette différence en détail.\newline
 \textbf{\textit{message chiffré$(Ciphertext)$, message clair$(plaintext)$ dans SEAL.}}\newline
 Les messages clairs dans SEAL c'est sont des élément de $R_t$ comme dans le cryptosysème Fan et Vercautreen,
@@ -381,14 +394,14 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
  \item[Evaluator::exponentiate :] Elévation d'un message chiffré à une puissance qui est un nombre entier,
   \end{description}
   \subsection{Régression linéaire et chiffrément homomorphe}
-  \subsubsection{Implementation de stochastic gradient descent \cite{codehomomorphicencryptionlr}}
-  Dans cette partie le travail demandé est d'implementer l'algorithme cité dans la partie $4.1.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
+  \subsubsection{Implémentation de stochastic gradient descent \cite{codehomomorphicencryptionlr}}
+  Dans cette partie le travail demandé est d'implémenter l'algorithme cité dans la partie $4.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
   Le but de cette implementation est d'évaluer la performance du modèle obtenu a partir des données chiffrées et de le comparer au niveau des différents paramètres avec le modèle obtenu a partir des données clairs.\newline
   Parmis les paramaètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
   \subsubsection{Problèmes}
-  Parmis les problèmes que j'ai rencontré pendant l'implementation de l'algorithme  sur les données chiffrées c'est qu'on un paramètre associé a chaque texte chiffrées pendant sa création (budget de noise), au début il est initialisée selon le paramètres qu'on choisit pour notre cryptosystème  et après chaque opération sur le texte chiffré la valeur diminu  et quand il atteint la valeur 0 le texte chiffré devient indéchiffrable donc la solution est de savoir controler ce paramètre.
+  Parmis les problèmes que j'ai rencontré pendant l'implementation de l'algorithme  sur les données chiffrées c'est qu'on un paramètre associé a chaque texte chiffrées pendant sa création (budget de noise), au début il est initialisé selon le paramètres qu'on choisit pour notre cryptosystème  et après chaque opération sur le texte chiffré la valeur diminue et quand il atteint la valeur 0 le texte chiffré devient indéchiffrable donc la solution est de savoir controler ce paramètre.
   \subsubsection{Solution}
-  La solution pour ce probème comme il le montre la figure suicante :
+  La solution pour ce probème comme il le montre la figure suivante :\newline
   \begin{figure}[h!]\begin{center}
     \includegraphics[width=10cm]{SchemaM.pdf}
     \caption{Mode de fonctionnement de modèle avec des données chiffrées}
@@ -396,9 +409,11 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
     \label{fig:loss_linear}
   \end{center}
   \end{figure}
- L'idée c'est qu'après un nombre d'itération précis dans l'algorithme de la descente de gradient stochastique on renvoit le modèle qui est l'élément sur lequel on efectue le plus d'opérations, c'est qui signifie que le budget de noise diminue constamment, a la personne qui détient la clé secrète pour d'il déchiffre et rechiffre et comme ca on repart avec un budget de noise élevé.
+  \newline
+ L'idée c'est qu'après un nombre d'itération précis dans l'algorithme de la descente de gradient stochastique on renvoit le modèle qui est l'élément sur lequel on efectue le plus d'opérations, c'est qui signifie que le budget de noise diminue constamment, a la personne qui détient la clé secrète pour qu'il déchiffre et rechiffre et avec cette méthode on repart avec un budget de noise élevé.
 
-  \subsubsection{résultats obtenu et comparaison}
+  \subsubsection{Résultats obtenu et comparaison}
+  On voit bien sur la figure 5 qu'après 613 itérations ( l'execution de l'algorithme a pris presque 18 heures ) la variation de la fonction d'erreur dans le deux cas est presque similaire.  
   \begin{figure}[h!]\begin{center}
     \includegraphics[width=10cm]{loss_linear_regression.png}
     \caption{En vert la variation de la fonction d'erreur sur les données clairs\newline
@@ -410,19 +425,35 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
 \newpage
   \subsection{Régression logistique et chiffrement homomorphe}
   \subsubsection{Implementation de stochastic gradient descent}
-  \subsubsection{résultats obtenu et comparaison}
+  Dans cette partie le travail demandé est d'implementer l'algorithme cité dans la partie $4.2$, cette partie est similaire au niveau implementation que celle de la régression linéaire sauf que cette fois on a la fonction sigmoid a la place de la fonction linéaire.
+  et comme dans la fonction sigmoid on a le terme exponentielle qui n'est pas définie dans SEAL il a fallu approximer avec d'autres fonctions.\newline
+  \textit{Première tentative}\newline
+  La prémière idée est d'approximmer la fonction sigmoid avec un développement de taylor comme a été introduit dans l'application "Manual for using homomorphic encrytpion for bioinformatics",\newline    
+  \newcommand\omicron{o}
+  $$\dfrac{1}{1+e^{-x}} = \dfrac{1}{2} + \dfrac{1}{4}x - \dfrac{1}{48}x^3 + \dfrac{1}{480}x^5 - \dfrac{1}{80640}x^7 + \omicron(x^9)$$
+  Avec cette approximation la fonction exponentiate qui calcul la puissance d'un réel dans SEAL ne permet pas de traiter des messages chiffrés qui n'ont pas un budget de noise assez grand . donc le message apres l'application de la fonction exponentiate devient indéchifrable.\newline
+  cette idée n'a pas abouti donc il a été demandé de chercher une autre approximation.\newline  
+  \textit{Deuxième tentative}\newline  
+  La deuxième approximation c'était avec la fonction piecewise qui est défini de la façon suivante :\newline
+  \begin{equation}
+f(x)=
+\left\lbrace
+\begin{array}{ccc}
+0  & \mbox{si} & x<-2\\
+1/2 + x/4 & \mbox{si} & -2<x<2\\
+1 & \mbox{si} & x>2
+\end{array}\right.
+\end{equation} 
+Avec cette approximation il a fallu décrypter la valeur de x vu que dans SEAL on a pas des opérateurs pour comparer deux messages chiffrés.\newline
+  \subsubsection{Résultats obtenu et comparaison}
   \begin{figure}[h!]\begin{center}
     \includegraphics[width=10cm]{loss_logistic_regression.png}
-    \caption{}
-    \label{fig:loss_logistic}
+    \caption{En vert la variation de la fonction d'erreur sur les données clairs\newline
+            En mauve la variation de la fonction d'erreur sur les données chiffrées}
+     \label{fig:loss_logistic}
   \end{center}
   \end{figure}
-
-  \newpage
+\newpage
 \bibliographystyle{unsrt}
 \bibliography{/home/benissa/Bureau/rapport-de-stage/biblio-rapport.bib}
-
-
-
-
 \end{document}
