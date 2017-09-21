@@ -111,21 +111,24 @@ La procédure de génération de clés de chiffrement et de déchiffrement est l
 \item  On calcul $N=pq$ \newline et $\lambda =\lambda(N) = ppcm(p-1, q-1)$.
 \item  on choisit aléatoirement $g$ telque :\newline $pgcd(\dfrac{(g^\lambda mod\, N^2)-1 }{N}, N) = 1$.\newline
 \end{enumerate}
-Le couple $(g, N)$ est la clé publique, tandis que Le couple $(p,q)$ est la clé secrète.\newline
+Le couple $pk = (g, N)$ est la clé publique, tandis que Le couple $sk = (p,q)$ est la clé secrète.\newline
 Chiffrement :\newline
 Pour chiffré un message $m \in Z_N$, on choisit uniformément et aléatoirement $r\in Z^{*}_N$ ,\newline
 et le message chiffré $c$ sera égale : $c = g^mr^N\,mod\,N^2$\newline
 Déchiffrement:\newline
 Pour déchiffré le message : $m = \dfrac{c^\lambda\;mod\;N^2}{g^\lambda\;mod\;N^2}\;mod\;N.$\newline
 Homomorphie :\newline
-Soit $c_1$ et $c_2$ deux messages chiffrées telque :\newline
-$c_1 = g^{m_1}r^N\,mod\,N^2.$\newline
-$c_2 = g^{m_2}r^N\,mod\,N^2.$\newline
+Soit $c_1$ et $c_2$ deux messages chiffrées corresponds au deux messages clairs $m_1$ et $m_2$ telque :\newline
+$c_1 = g^{m_1}r_1^N\,mod\,N^2.$\newline
+$c_2 = g^{m_2}r_2^N\,mod\,N^2.$\newline
+On a :\newline
+\newline
+$Enc_{pk}(m_1) * Enc_{pk}(m_2) = (g^{m_1}r_1^n)(g^{m_2}r_2^n)\;mod\;N^2 = g^{m_1 + m_2}(r_1r_2)^n\,mod\,N^2 = Enc_{pk}(m_1 + m_2).$\newline
 \subsubsection{Chiffrement complètement homomorphe}
           \paragraph{Définition }
 Un cryptosystème est dit homomorphe si une opération algébrique effectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
 En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
-\paragraph{Généralités sur les réseaux euclidiens}
+\paragraph{Généralités sur les réseaux euclidiens\cite{rapport_stage}}
 \textit{ Définition 1:} Un réseau euclidien est un sous-groupe discret additif de $R^n$.\newline
 \newline
 \textit{ Définition 2:} une base $b= (b_1,b_2,...........,b_n)$  d’un réseau euclidien $L$ dans $R^n$ est un ensemble de $n$ vecteurs 
@@ -314,7 +317,7 @@ L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchi
 Gilad-Bachrach et al.  ont appliqué leurs Crytonets sur le au jeu de donné MNIST (dataset standard et historique en machine learning composé de chiffres manuscrits).
 Les CryptoNets
 on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.
-\subsubsection{Biomedical application \cite{dowlin2017manual} } 
+\subsubsection{Biomedical application \cite{deowlin2017manual} } 
 Dans cette application on trouve la mise en oeuvre du modèle  regression logistque sur des données médicales  chiffrées(le fonctionnement de ce modèle sera détaillé dans la suite de ce rapport). ce travail a pour objectif de prédire l'état de santé des patients tout en preservant l'anonymat sur leurs dossiers medicals.\newline
 Le modèle a été entrainé sur des données claires afin de constituer les paramètres du modèle, ensuite de prédire sur des données chiffrées en utilisant une approximation de la fonction sigmoid (developement de taylor). 
 
@@ -409,7 +412,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
  \item[Evaluator::exponentiate :] Elévation d'un message chiffré à une puissance qui est un nombre entier,
   \end{description}
   \subsection{Régression linéaire et chiffrément homomorphe}
-  \subsubsection{Implémentation de stochastic gradient descent} 
+  \subsubsection{Implémentation de stochastic gradient descent : \cite{code_HE}}: 
   Dans cette partie le travail demandé est d'implémenter l'algorithme cité dans la partie $4.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
   Le but de cette implementation est d'évaluer la performance du modèle obtenu a partir des données chiffrées et de le comparer au niveau des différents paramètres avec le modèle obtenu a partir des données clairs.\newline
   Parmis les paramaètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
@@ -443,7 +446,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
   Dans cette partie le travail demandé est d'implementer l'algorithme cité dans la partie $4.2$, cette partie est similaire au niveau implementation que celle de la régression linéaire sauf que cette fois on a la fonction sigmoid a la place de la fonction linéaire.
   et comme dans la fonction sigmoid on a le terme exponentielle qui n'est pas définie dans SEAL il a fallu approximer avec d'autres fonctions.\newline
   \textit{Première tentative}\newline
-  La prémière idée est d'approximmer la fonction sigmoid avec un développement de taylor comme a été introduit dans l'application "Manual for using homomorphic encrytpion for bioinformatics",\newline    
+  La prémière idée est d'approximmer la fonction sigmoid avec un développement de taylor comme a été introduit dans l'article\cite{deowlin2017manual}.\newline
   \newcommand\omicron{o}
   $$\dfrac{1}{1+e^{-x}} = \dfrac{1}{2} + \dfrac{1}{4}x - \dfrac{1}{48}x^3 + \dfrac{1}{480}x^5 - \dfrac{1}{80640}x^7 + \omicron(x^9)$$
   Avec cette approximation la fonction exponentiate qui calcul la puissance d'un réel dans SEAL ne permet pas de traiter des messages chiffrés qui n'ont pas un budget de noise assez grand . donc le message apres l'application de la fonction exponentiate devient indéchifrable.\newline
