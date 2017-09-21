@@ -15,7 +15,7 @@
 \author{BENISSA Sami\quad:\quad Université Paris 8}
 
 
-\date{8 septembre 2017}
+\date{28 septembre 2017}
 \begin{document}
 \maketitle
 \newpage
@@ -107,14 +107,20 @@ Alors, on a $(c_1*c_2) \equiv (m_1*m_2)^e(mod\; n)$\newline
 Le cryptosystème de Paillier est un homomorphisme additif basé sur un algorithme asymétrique et conçut par Pascal Paillier en 1999.\newline
 La procédure de génération de clés de chiffrement et de déchiffrement est la suivante:
 \begin{enumerate}
-\item Choisir deux nombres premiers de grande taille, indépendants et aléatoires : $p$   et $q$.
-\item La clé publique $sk = p*q$ et la clé sécrète $pk = \phi(n) = (p - 1)(q -1)$.\end{enumerate}
+\item Choisir deux nombres premiers de grandse taille: $p$   et $q$.
+\item  On calcul $N=pq$ \newline et $\lambda =\lambda(N) = ppcm(p-1, q-1)$.
+\item  on choisit aléatoirement $g$ telque :\newline $pgcd(\dfrac{(g^\lambda mod\, N^2)-1 }{N}, N) = 1$.\newline
+\end{enumerate}
+Le couple $(g, N)$ est la clé publique, tandis que Le couple $(p,q)$ est la clé secrète.\newline
 Chiffrement :\newline
-Soit $m$ un entier naturel strictement inférieur à $n$, on choisi aléatoirement un entier $r$ plus petit que $n$ :\newline
-$$c = (1+N)^m * r^N\;mod\; N^2$$
+Pour chiffré un message $m \in Z_N$, on choisit uniformément et aléatoirement $r\in Z^{*}_N$ ,\newline
+et le message chiffré $c$ sera égale : $c = g^mr^N\,mod\,N^2$\newline
 Déchiffrement:\newline
-
-On a $c \equiv r^N\;mod\; N$
+Pour déchiffré le message : $m = \dfrac{c^\lambda\;mod\;N^2}{g^\lambda\;mod\;N^2}\;mod\;N.$\newline
+Homomorphie :\newline
+Soit $c_1$ et $c_2$ deux messages chiffrées telque :\newline
+$c_1 = g^{m_1}r^N\,mod\,N^2.$\newline
+$c_2 = g^{m_2}r^N\,mod\,N^2.$\newline
 \subsubsection{Chiffrement complètement homomorphe}
           \paragraph{Définition }
 Un cryptosystème est dit homomorphe si une opération algébrique effectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.\newline
@@ -300,15 +306,15 @@ Le clustering consiste à regrouper les données en groupes homogènes appelés 
 \subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
 Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
 Parmis les travaux qui ont vu le jour  :\newline
-\textbf{\textit{Cryptonets \cite{1gilad2016cryptonets} }} :  \newline
+\subsubsection{Cryptonets \cite{1gilad2016cryptonets} }
 Gilad-Bachrach et al. ont mis au point une méthode pour convertir des réseaux de neurones entrainés à des réseaux pouvant être appliqués à des données encryptées et appelés Cryptonets .
 De tels réseaux permettent au détenteur de données de les envoyer sous forme chiffrée à un opérateur extérieur basé sur le cloud.\\
 L'opérateur n'ayant pas acces a la clé de déchiffrement, la confidentialité des données est assurée.
 L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchiffrement des données qui peut alors déchiffrer la prédiction. De cette manière, l'opérateur du cloud n'a pas d'information exploitable ni sur les données brutes ni sur les prédictions. Cette chaine d'actions est représentée sur la figure . 
 Gilad-Bachrach et al.  ont appliqué leurs Crytonets sur le au jeu de donné MNIST (dataset standard et historique en machine learning composé de chiffres manuscrits).
 Les CryptoNets
-on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.\textit{ \cite{dowlin2017manual} } :\newline
-\textbf{\textit{Biomedical application \cite{dowlin2017manual} }} :  \newline
+on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.
+\subsubsection{Biomedical application \cite{dowlin2017manual} } 
 Dans cette application on trouve la mise en oeuvre du modèle  regression logistque sur des données médicales  chiffrées(le fonctionnement de ce modèle sera détaillé dans la suite de ce rapport). ce travail a pour objectif de prédire l'état de santé des patients tout en preservant l'anonymat sur leurs dossiers medicals.\newline
 Le modèle a été entrainé sur des données claires afin de constituer les paramètres du modèle, ensuite de prédire sur des données chiffrées en utilisant une approximation de la fonction sigmoid (developement de taylor). 
 
