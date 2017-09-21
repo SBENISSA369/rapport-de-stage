@@ -324,80 +324,87 @@ Le modèle a été entrainé sur des données claires afin de constituer les par
 \newpage
 \newpage
 \section{Application}
-La deuxième partie de mon stage a été consacré a l'implementation de quelques algorithmes d'apprentissage automatique.\newline
-Au début l'implementation s'effectue sur des données clairs pour bien comprendre les différents paramètres qu'il faut prendre en compte pour evaluer la qualité du modèle, et par la suite l'imlementation se fait sur des données chiffrées et comparer les résultats obtenu. \newline      
-\subsection {Regression Lineaire}
-La regression linéaire est une modélisation linéaire qui permet de fournir des prédictions a partir des informations provenant du passé, 
-Dans ce modèle on établi une relation entre une ou plusieurs variables explicatives $(x_1,x_2,..........,x_n)$ et une variable expliquée souvent noté par $Y$.\newline
-La fonction d'evaluation dans la régression lineaire est la suivante : \newline
+La deuxième partie de mon stage j'ai codé en C++ l'algorithme de la descente de radient stochastique pour optimiser le deux modèles de regression linéaire et logistique .\newline
+Dans un premier temps j'ai implementé sur des données claires pour bien comprendre les différents paramètres à prendre en compte pour evaluer la qualité du modèle. Par la suite j'ai implementé sur des données chiffrées et finalement j'ai comparé les résultats obtenus. \newline
+Dans cette partie j'introduis le deux modèles de regression logistique puis la bibliothèque de chiffrement homomorphe SEAL avant de présenter le coeur de mon travail.\newline       
+\subsection {Régression Linéaire}
+La regression linéaire est une modélisation linéaire qui permet de fournir des prédictions à partir d'une base des données d'exemples connus.\newline 
+Dans ce modèle on établi une relation entre une ou plusieurs variables explicatives $(x_1,x_2,..........,x_n)$ et une variable à expliquée souvent noté par $Y$.\newline
+La fonction d'évaluation dans la régression linéaire est la suivante : \newline
 $$Y =h_{\theta}(x) = \theta^T = \sum_{i=1}^{n} \theta_ix_i $$\newline
-ou $\theta_j (j=1................n)$ ces sont les paramètres du modèle qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
-\subsubsection{Algorithme de descente de gradient stochastique \textit{(stochastic gradient descent)}}.\newline
+où $\theta_j (j=1................n)$ sont les paramètres du modèle qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
+\subsubsection*{Algorithme de descente de gradient stochastique \textit{(Stochastic Gradient Descent(SGD))}}.\newline
 Cet algorithme permet de minimiser la fonction d'erreur ($J(\theta)$) qui s'écrit sous la forme : \newline
 $$J(\theta) = \dfrac{1}{2m}\sum_{i=1}^{m} (h_{\theta}^{x^{(i)}} - y^{(i)})^2$$\newline  
 \newline
-La descente de gradient stochastique premet de choisir les paramètres du modèle $\theta_i$ afin de minimiser la fonction d'erreur.\newline
+La descente de gradient stochastique premet de choisir les paramètres $\theta_i$ du modèle afin de minimiser la fonction d'erreur.\newline
 Algorithme : \newline
-\textit{inisialiser :} $\theta_i\quad pour\quad i=1 \quad jusqu'a\quad n$\newline
-\textit{inisialiser : }$learning\_rate\quad(\alpha)$\newline
-\textit{répéter}\{\newline 
-\hspace*{1cm}\textit{pour j=1 jusqu'à m}\{
-$$\theta_j := \theta_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
-\hspace*{1cm}\}\newline
-
+\begin{itemize}
+\item{\textit{inisialiser :} $\theta_i\quad pour\quad i=1 \quad jusqu'\`{a}\quad n$}
+\item{\textit{inisialiser : }$learning\_rate\quad(\alpha)$}
+\item{\textit{répéter}\{\\ 
+    \hspace*{1cm}\textit{pour j=1 jusqu'à m}\{
+    $$\theta_j := \theta_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
+    \hspace*{1cm}\}}
+\end{itemize}
 \subsection{Regression Logistique}
-La regression logistique est une méthode statistique pour analyser un ensemble des données dans lequel il existe une ou plusieurs variables indépendantes qui servent a déterminer un résultat.\newline
-L'objectif de la régression logistique est de trouver le meilleur modèle pour décrire le lien entre les vraiables explicatives et la variable dépondante ou la variable expliquée.\newline
+La regression logistique est une méthode statistique pour analyser un ensemble de données dans lequel il existe une ou plusieurs variables indépendantes qui servent a déterminer un résultat.\newline
+L'objectif de la régression logistique est de trouver le meilleur modèle pour décrire le lien entre les variables explicatives et la variable dépendante ou la variable  à expliquée.\newline
 Dans ce qui suit, nous noterons $Y$ la variable à prédire (variable expliquée), $X = (X_1, X_2, ..., X_J)$ les variables prédictives (variables explicatives). \newline
-Dans le cadre de la régression logistique binaire, la variable $Y$ prend deux modalités possibles \{1, 0\}. Les variables $X_j$ sont exclusivement binaire. \newline
+Dans le cadre de la régression logistique binaire, la variable $Y$ a deux valeurs possibles \{1, 0\}.\newline
 La fonction de prédiction dans la régression logistique est la suivante :\newline
 $$h_{w,b}(x)=\dfrac{1}{1 + exp(-w^T x - b)}$$
-ou $w_j$ : ces sont les paramètres du modèle.\newline
-Pour l'estimation des paramètrs du modèle, on utilise l'algorithme de la descente de gradient stochastique qui sert a minimiser la fonction d'erreu r :\newline
+ou $w_j$ sont les paramètres du modèle.\newline
+Pour l'estimation des paramètres du modèle, on utilise l'algorithme de descente de gradient stochastique qui sert a minimiser la fonction d'erreur :\newline
 $$J(w,b) = \dfrac{1}{m}(\sum_{i=1}^{m}-y^{(i)}log(h_{w,b}(x^{(i)}))-(1-y^{(i)})log(1 - h_{w,b}(x^{(i)}))).$$\newline 
 L'implémentation de l'algorithme de la descente de gradient stochastique se fait de la meme façon que la régression linéaire.\newline
-\textit{répéter}\{\newline 
+\begin{itemize}
+\item{\textit{inisialiser :} $w_i\quad pour\quad i=1 \quad jusqu\quad n$}
+\item{\textit{inisialiser : }$learning\_rate\quad(\alpha)$}
+
+\item{répéter}\{\newline 
 \hspace*{1cm}\textit{pour j=1 jusqu'à m}\{
 $$w_j := w_j - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})x_j^{(i)} \quad(pour\, tout \, j)$$
 $$ b := b - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})$$
 \hspace*{1cm}\}\newline
 \} 
+\end{itemize}
 \subsection{SEAL:Simple Encrypted Arithmetic Library}
 \subsubsection{Présentation de la bibliothèque}
 SEAL est une bibliothèque de chiffrement homomorphe libre qui est en cours de developpement par Microsoft Research, elle est écrit en C++11.
 Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. \newline
  \newline
-\textbf{différence entre l'implémentation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
-Dans SEAL, certaines opérations sont implémentées d'une facon différente qui est plus générale par rapport au cryptosystème FV.\newline
+\textbf{Différence entre l'implémentation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
+Dans SEAL, certaines opérations sont implémentées d'une façon différente qui est plus générale par rapport au cryptosystème FV.\newline
 Dans cette partie on traite cette différence en détail.\newline
 \textbf{\textit{message chiffré$(Ciphertext)$, message clair$(plaintext)$ dans SEAL.}}\newline
 Les messages clairs dans SEAL c'est sont des élément de $R_t$ comme dans le cryptosysème Fan et Vercautreen,
 Dans la version 2.2 les messages clairs sont présenter dans une classe Plaintext .\newline
-Pour clarifier la généralisation des opérations FV, les messages chiffrés sont des vecteurs de taille qualconque et chaque composant chiffré correspond à une puissance de la clé secrète, Si on suppose que $ct = (c_0,..........,c_k)$ est un message chifré de taille $k+1$ alors,\newline
+Pour clarifier la généralisation des opérations FV, les messages chiffrés sont des vecteurs de taille quelconque et chaque composant chiffré correspond à une puissance de la clé secrète. Si on suppose que $ct = (c_0,..........,c_k)$ est un message chifré de taille $k+1$ alors,\newline
 $c_0\quad correspond \quad à \quad s^0.$\newline
 $c_1\quad correspond \quad à \quad s^1.$\newline
 $c_k\quad correspond \quad à \quad s^k.$
 \newline
- Dans SEAL les messages chiffré sont présenter dans une classe Ciphertext.\newline
+ Dans SEAL les messages chiffrés sont présenter dans une classe Ciphertext.\newline
+ \newline
  \textbf{Déchiffrement d'un message de taille quelconque.}\newline
 soit $ct = (c_0, c_1, .........., c_k)$ une message chiffré de taille $k+1.$\newline
 $Dec(ct) = Dec((c_0, c_1, .........., c_k)) = [\lfloor\dfrac{t}{q}[ct(s)]_q\rceil]_t = [\lfloor\dfrac{t}{q}[c_0 + c_1s+c_2s^2+.......,c_ks^k]_q\rceil]_t$\newline
 Multiplication et addition de deux message dans SEAL\newline
-\textit{Addition:}\newline
-soient $ct_1$ et $ct_2$ deux message chifré telque,\newline
-$ct_1 = (c_0,............,c_j)$, $ct_2 = (d_0,............,d_k)$
+\hspace{10cm}{\textit{Addition:}\newline}
+\hspace{2cm}soient $ct_1$ et $ct_2$ deux messages chiffrés tels que,\newline
+\hspace{2cm}$ct_1 = (c_0,............,c_j)$, $ct_2 = (d_0,............,d_k)$
 \newline
-\textit{Addition : }\newline
 \newline
-$si\quad on\quad suppose\quad que\quad k\quad \leq \quad j\quad on\quad a \quad:$\newline
+\hspace{2cm}$si\quad on\quad suppose\quad que\quad k\quad \leq \quad j\quad on\quad a \quad:$\newline
 \newline
-$Add(ct_1, ct_2) = (ct_1[0]+ct_2[0],ct_1[1]+ct_2[1],..............,ct_1[k]+ct_2[k])$\newline
+\hspace{2cm}$Add(ct_1, ct_2) = (ct_1[0]+ct_2[0],ct_1[1]+ct_2[1],..............,ct_1[k]+ct_2[k])$\newline
 \newline
-\textit{Multiplication:}\newline
+\hspace{2cm}\textit{Multiplication:}\newline
 \newline
-$Mult(ct_1, ct_2) = (C_1,C_2,............., C_{j+k})$ avec :\newline
-$$C_m = [\lfloor\dfrac{t}{q}(\sum_{r+s=m}^{}c_rd_s)\rceil]_q.$$
-\textit{Relinearization:}\newline
+\hspace{2cm}$Mult(ct_1, ct_2) = (C_1,C_2,............., C_{j+k})$ avec :\newline
+\hspace{2cm}$$C_m = [\lfloor\dfrac{t}{q}(\sum_{r+s=m}^{}c_rd_s)\rceil]_q.$$
+\hspace{2cm}\textit{Relinearization:}\newline
 \newline
 \textit{Autres opérations définies dans SEAL:}\newline
 Toutes les opérations sont définies dans une classe Evaluator\newline
@@ -412,7 +419,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
  \item[Evaluator::exponentiate :] Elévation d'un message chiffré à une puissance qui est un nombre entier,
   \end{description}
   \subsection{Régression linéaire et chiffrément homomorphe}
-  \subsubsection{Implémentation de stochastic gradient descent : \cite{code_HE}}: 
+  \subsubsection{Implémentation de stochastic gradient descent : \cite{code_HE_lr}}: 
   Dans cette partie le travail demandé est d'implémenter l'algorithme cité dans la partie $4.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
   Le but de cette implementation est d'évaluer la performance du modèle obtenu a partir des données chiffrées et de le comparer au niveau des différents paramètres avec le modèle obtenu a partir des données clairs.\newline
   Parmis les paramaètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
@@ -441,7 +448,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
   \end{center}
   \end{figure}
 \newpage
-  \subsection{Régression logistique et chiffrement homomorphe}
+  \subsection{Régression logistique et chiffrement homomorphe\cite{code_HE_logistic_reg}}
   \subsubsection{Implementation de stochastic gradient descent}
   Dans cette partie le travail demandé est d'implementer l'algorithme cité dans la partie $4.2$, cette partie est similaire au niveau implementation que celle de la régression linéaire sauf que cette fois on a la fonction sigmoid a la place de la fonction linéaire.
   et comme dans la fonction sigmoid on a le terme exponentielle qui n'est pas définie dans SEAL il a fallu approximer avec d'autres fonctions.\newline
