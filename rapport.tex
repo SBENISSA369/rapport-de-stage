@@ -55,6 +55,7 @@ High tech et hardware : certaines start up du Deep Learning utilise le code Joli
 \section{Introduction}
 \subsection{Contexte : Big data et intelligence artificielle (IA)}
 \subsection{Problématique : éthique et confidentialité}
+L'application du machine learning à des tâches relevant du domaine  médical, de la finance et de manière général appliqué à des données ``sensibles'' nécessite non seulement une grande précision des prédictions mais aussi de porter un intérêt particulier au questions de confidentialité et de sécurité. Les aspects légaux et ethics peuvent représenter un frein à l'application de solution machine larning directement sur les données du \textit{cloud}.\\
 \subsection{Objectif du stage}
 Le But de  stage était de concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.\newline
 Ce type d'application peut servir dans les domaines ou on veut appliquer de calcul sur des données privées.\newline
@@ -272,19 +273,17 @@ En machine learning on a deux types des données :\newline
 \newline
 \textbf{Les données labélisées :} on donne à l’algorithme un certain nombre d’exemples sur lesquels l'algorithme  apprend, et ces exemples sont « labellisés », c’est-à-dire qu’on leur associe un résultat désiré . L’algorithme a alors pour tâche de trouver la loi qui permet de trouver la sortie en fonction des entrées.\newline
 \newline 
-\textbf{Les données non-labellisée :} définition2.
+\textbf{Les données non-labellisée :} c'est un ensemble des données qui n'est pas étiqueté. L'objectif de l'algorithme et de le diviser en plusieurs partie de manière que les données considérées comme les plus similaires soient associées au sein de même groupe.
 \subsubsection{La décision} 
 On distingue deux types des décisions pour les algorithmes en machine learning. \newline
 \textbf{Sorties catégorisées ou discrètes :} le nombre de sorties possible est fini. Dans ce cas, les sorties possibles sont appelées classes\newline
 \textbf{Sorties non-catégorisées ou continues :} le nombre de sorties possible est infini dont la sortie de l'algorithme y est dans $R$ .\newline
 \begin{figure}[h!]\begin{center}
     \includegraphics[width=5cm]{classifictation_vs_regression.png}
-    \caption{En bleu la base donnée du réseau, en vert le vecteur donné,en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.}
+    \caption{Différent type de décision.}
     \label{fig:cvp}
   \end{center}
   \end{figure}
-
-\hspace*{5cm}{}\includegraphics[scale=1]{classifictation_vs_regression.png}
 \subsubsection{Types d'apprentissages}
 il y a deux pricipaux systèmes d'apprentissage qui définissent les différents modes de fonctionnement de machine learning.\newline
 \title{\textbf{L’apprentissage supervisé ou analyse discriminatoire}}\newline
@@ -298,27 +297,30 @@ Le clustering consiste à regrouper les données en groupes homogènes appelés 
 Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
 Parmis les travaux qui ont vu le jour  :\newline
 \textit{Cryptonets \cite{1gilad2016cryptonets} } :  \newline
-Dans cette application la phase d'apprentissage a été effectué sur des données clair  afin d'obtenir le modèle qui va servir dans la phase d'inférence, et ce dernier a été éffectué sur des données chiffrées.\newline
-Le jeux des données qui a été utilisé pour cette demonstration est MNIST c'est une base de données de chiffres écrits à la main. C'est un jeu de données très utilisé en apprentissage automatique.\newline
-Cryptonets a réalisé un taux de réussite de 99 \% et prend 570 secondes pour fournir une réponse par exemple.\newline
-\textit{ \cite{dowlin2017manual} } :\newline
+Gilad-Bachrach et al. ont mis au point une méthode pour convertir des réseaux de neurones entrainés à des réseaux pouvant être appliqués à des données encryptées et appelés Cryptonets \cite{1gilad2016cryptonets}.
+De tels réseaux permettent au détenteur de données de les envoyer sous forme chiffrée à un opérateur extérieur basé sur le cloud.\\
+L'opérateur n'ayant pas acces a la clé de déchiffrement, la confidentialité des données est assurée.
+L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchiffrement des données qui peut alors déchiffrer la prédiction. De cette manière, l'opérateur du cloud n'a pas d'information exploitable ni sur les données brutes ni sur les prédictions. Cette chaine d'actions est représentée sur la figure \cite{delahaye_PLS}. \\
+Gilad-Bachrach et al.  ont appliqué leurs Crytonets sur le au jeu de donné MNIST (dataset standard et historique en machine learning composé de chiffres manuscrits).
+Les CryptoNets
+on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.\textit{ \cite{dowlin2017manual} } :\newline
 
 \newpage
 \newpage
 \section{Application}
 La deuxième partie de mon stage a été consacré a l'implementation de quelques algorithmes d'apprentissage automatique.\newline
-Au début l'implementation s'effectue sur des données clairs pour bien comprendre les différents paramètres qu'il faut prendre en compte pour evaluer la qualité du modèl, et par la suite l'imlementation des memes algorithmes sur des données chiffrées et comparer les résultats obtenu. \newline      
+Au début l'implementation s'effectue sur des données clairs pour bien comprendre les différents paramètres qu'il faut prendre en compte pour evaluer la qualité du modèle, et par la suite l'imlementation se fait sur des données chiffrées et comparer les résultats obtenu. \newline      
 \subsection {Regression Lineaire}
 La regression linéaire est une modélisation linéaire qui permet de fournir des prédictions a partir des informations provenant du passé, 
 Dans ce modèle on établi une relation entre une ou plusieurs variables explicatives $(x_1,x_2,..........,x_n)$ et une variable expliquée souvent noté par $Y$.\newline
 La fonction d'evaluation dans la régression lineaire est la suivante : \newline
 $$Y =h_{\theta}(x) = \theta^T = \sum_{i=1}^{n} \theta_ix_i $$\newline
-ou $\theta_j (j=1................n)$ ces sont les paramètres du modèl qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
+ou $\theta_j (j=1................n)$ ces sont les paramètres du modèle qu'on devra estimer au moyen de techniques statistques parmis  lesquelles on trouve la descente de gradient stochastique.\newline
 \subsubsection{Algorithme de descente de gradient stochastique \textit{(stochastic gradient descent)}}.\newline
-Cet algorithme permet de minimiser la fonction d'erreur (cost function) qui s'écrit sous la forme : \newline
+Cet algorithme permet de minimiser la fonction d'erreur ($J(\theta)$) qui s'écrit sous la forme : \newline
 $$J(\theta) = \dfrac{1}{2m}\sum_{i=1}^{m} (h_{\theta}^{x^{(i)}} - y^{(i)})^2$$\newline  
 \newline
-La descente de gradient stochastique premet de choisir les paramètres du modèl $\theta_i$ afin de minimiser la fonction d'erreur.\newline
+La descente de gradient stochastique premet de choisir les paramètres du modèle $\theta_i$ afin de minimiser la fonction d'erreur.\newline
 Algorithme : \newline
 \textit{inisialiser :} $\theta_i\quad pour\quad i=1 \quad jusqu'a\quad n$\newline
 \textit{inisialiser : }$learning\_rate\quad(\alpha)$\newline
@@ -335,7 +337,7 @@ Dans le cadre de la régression logistique binaire, la variable $Y$ prend deux m
 La fonction de prédiction dans la régression logistique est la suivante :\newline
 $$h_{w,b}(x)=\dfrac{1}{1 + exp(-w^T x - b)}$$
 ou $w_j$ : ces sont les paramètres du modèle.\newline
-Pour l'estimation des paramètrs du modèle, on utilise l'algorithme de la descente de gradient stochastique qui sert a minimiser la fonction d'erreur :\newline
+Pour l'estimation des paramètrs du modèle, on utilise l'algorithme de la descente de gradient stochastique qui sert a minimiser la fonction d'erreu r :\newline
 $$J(w,b) = \dfrac{1}{m}(\sum_{i=1}^{m}-y^{(i)}log(h_{w,b}(x^{(i)}))-(1-y^{(i)})log(1 - h_{w,b}(x^{(i)}))).$$\newline 
 L'implémentation de l'algorithme de la descente de gradient stochastique se fait de la meme façon que la régression linéaire.\newline
 \textit{répéter}\{\newline 
@@ -346,7 +348,7 @@ $$ b := b - \alpha  \dfrac{1}{m}\sum_{i = 1}^{m} (h_{w,b}(x^{(i)}) - y^{(i)})$$
 \} 
 \subsection{SEAL:Simple Encrypted Arithmetic Library}
 \subsubsection{Présentation de la bibliothèque}
-SEAL est une bibliothèque de chiffrement homomorphe qui est en cours de developpement par des chercheurs en cryptographie a microsoft elle fait partie de logiciel libre, elle est écrit en C++11.
+SEAL est une bibliothèque de chiffrement homomorphe libre qui est en cours de developpement par Microsoft Research, elle est écrit en C++11.
 Un manuel détaillé pour l'utilisation de la version la plus récente de SEAL est disponible sur le lien \url{https://www.microsoft.com/en-us/research/publication/simple-encrypted-arithmetic-library-seal-v2-2/}. \newline
  \newline
 \textbf{différence entre l'implémentation de SEAL et cryptosysteme Fan et Vercautreen}  \newline
@@ -356,9 +358,9 @@ Dans cette partie on traite cette différence en détail.\newline
 Les messages clairs dans SEAL c'est sont des élément de $R_t$ comme dans le cryptosysème Fan et Vercautreen,
 Dans la version 2.2 les messages clairs sont présenter dans une classe Plaintext .\newline
 Pour clarifier la généralisation des opérations FV, les messages chiffrés sont des vecteurs de taille qualconque et chaque composant chiffré correspond à une puissance de la clé secrète, Si on suppose que $ct = (c_0,..........,c_k)$ est un message chifré de taille $k+1$ alors,\newline
-$c_0\quad correspond\quad à\quad s^0.$\newline
-$c_1\quad correspond\quad à\quad s^1.$\newline
-$c_k\quad correspond\quad à\quad s^k.$
+$c_0\quad correspond \quad à \quad s^0.$\newline
+$c_1\quad correspond \quad à \quad s^1.$\newline
+$c_k\quad correspond \quad à \quad s^k.$
 \newline
  Dans SEAL les messages chiffré sont présenter dans une classe Ciphertext.\newline
  \textbf{Déchiffrement d'un message de taille quelconque.}\newline
@@ -444,7 +446,9 @@ f(x)=
 1 & \mbox{si} & x>2
 \end{array}\right.
 \end{equation} 
-Avec cette approximation il a fallu décrypter la valeur de x vu que dans SEAL on a pas des opérateurs pour comparer deux messages chiffrés.\newline
+Avec cette approximation il a fallu décrypter la valeur de x vu que dans SEAL on a pas des opérateurs pour comparer deux messages chiffrés.\newline 
+Avec cette approximation de la fonction sigmoid on a réussi à avoir des résultats qui sont proche aux résultats qu'on a obtenu quand on traite des données claires  mais le seul obstacle pour mettre le en application c'est que le temps d'execution d'algorithme prend beaucoup du temps . 
+
   \subsubsection{Résultats obtenu et comparaison}
   \begin{figure}[h!]\begin{center}
     \includegraphics[width=10cm]{loss_logistic_regression.png}
