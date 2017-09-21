@@ -54,6 +54,7 @@ High tech et hardware : certaines start up du Deep Learning utilise le code Joli
 \newpage
 \section{Introduction}
 \subsection{Contexte : Big data et intelligence artificielle (IA)}
+Depuis quelques années  et avec L'explosion du volume de données sur internet l'être humain et devenue incapable d'anayser et de traiter ces données et de résoudre des problèmes liés a ce phénomène, donc la nécessité de confier cette mission à la machine via des algorithmes d'inteligence artificiel.     
 \subsection{Problématique : éthique et confidentialité}
 L'application du machine learning à des tâches relevant du domaine  médical, de la finance et de manière général appliqué à des données ``sensibles'' nécessite non seulement une grande précision des prédictions mais aussi de porter un intérêt particulier au questions de confidentialité et de sécurité. Les aspects légaux et ethics peuvent représenter un frein à l'application de solution machine larning directement sur les données du \textit{cloud}.\\
 \subsection{Objectif du stage}
@@ -254,7 +255,7 @@ Le schéma de Fan et Vercautreen contient sept algorithmes : \newline
 L'apprentissage automatique (machine learning en anglais) est une discipline consacrée à l'analyse des données. cette discipline nous permet de créer des connaissances automatiques à partir des données brutes, cela consciste à la mise en place des algorithmes (ou modèle) qui vont etre exploiter pour prendre des décisions.\newline
 Le schéma suivant montre le mode de fonctionnement d'un modèle en machine learning.\newline
 \begin{figure}[h!]\begin{center}
-    \includegraphics[width=5cm]{m_learning.png}
+    \includegraphics[width=8cm]{m_learning.png}
     \caption{mode de fonctionnement d'un modèle en machine learning}
     \label{fig:m_learning}
   \end{center}
@@ -296,7 +297,7 @@ Le clustering consiste à regrouper les données en groupes homogènes appelés 
 \subsection{Quelques Applications de chiffrement homomorphe a l'apprentissage automatique}
 Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
 Parmis les travaux qui ont vu le jour  :\newline
-\textit{Cryptonets \cite{1gilad2016cryptonets} } :  \newline
+\textbf{\textit{Cryptonets \cite{1gilad2016cryptonets} }} :  \newline
 Gilad-Bachrach et al. ont mis au point une méthode pour convertir des réseaux de neurones entrainés à des réseaux pouvant être appliqués à des données encryptées et appelés Cryptonets \cite{1gilad2016cryptonets}.
 De tels réseaux permettent au détenteur de données de les envoyer sous forme chiffrée à un opérateur extérieur basé sur le cloud.\\
 L'opérateur n'ayant pas acces a la clé de déchiffrement, la confidentialité des données est assurée.
@@ -304,6 +305,9 @@ L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchi
 Gilad-Bachrach et al.  ont appliqué leurs Crytonets sur le au jeu de donné MNIST (dataset standard et historique en machine learning composé de chiffres manuscrits).
 Les CryptoNets
 on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.\textit{ \cite{dowlin2017manual} } :\newline
+\textbf{\textit{Biomedical application \cite{1gilad2016cryptonets} }} :  \newline
+Dans cette application on trouve la mise en oeuvre du modèle  regression logistque sur des données médicales  chiffrées(le fonctionnement de ce modèle sera détaillé dans la suite de ce rapport). ce travail a pour objectif de prédire l'état de santé des patients tout en preservant l'anonymat sur leurs dossiers medicals.\newline
+Le modèle a été entrainé sur des données claires afin de constituer les paramètres du modèle, ensuite de prédire sur des données chiffrées en utilisant une approximation de la fonction sigmoid (developement de taylor). 
 
 \newpage
 \newpage
@@ -396,7 +400,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
  \item[Evaluator::exponentiate :] Elévation d'un message chiffré à une puissance qui est un nombre entier,
   \end{description}
   \subsection{Régression linéaire et chiffrément homomorphe}
-  \subsubsection{Implémentation de stochastic gradient descent \cite{codehomomorphicencryptionlr}}
+  \subsubsection{Implémentation de stochastic gradient descent} 
   Dans cette partie le travail demandé est d'implémenter l'algorithme cité dans la partie $4.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
   Le but de cette implementation est d'évaluer la performance du modèle obtenu a partir des données chiffrées et de le comparer au niveau des différents paramètres avec le modèle obtenu a partir des données clairs.\newline
   Parmis les paramaètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
