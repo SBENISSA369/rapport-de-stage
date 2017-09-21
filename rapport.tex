@@ -54,7 +54,10 @@ High tech et hardware : certaines start up du Deep Learning utilise le code Joli
 \newpage
 \section{Introduction}
 \subsection{Contexte : Big data et intelligence artificielle (IA)}
-Depuis quelques années  et avec L'explosion du volume de données sur internet l'être humain et devenue incapable d'anayser et de traiter ces données et de résoudre des problèmes liés a ce phénomène, donc la nécessité de confier cette mission à la machine via des algorithmes d'inteligence artificiel.     
+Depuis quelques années  et avec l'explosion du volume de données (internet, objet connecté,etc) il est devenu impossible pour un être humain d'extraier de l'information "à l'oeil nu".  
+Il est donc nécessaire de confier cette mission à la machine via des algorithmes d'inteligence artificiel(IA).
+L'apprentissage automatique est un sous domaine de IA qui nous permet de résoudre des tâches trop complexes à pour les humains.\newline    
+Le principe d'approntissage automatique est de reproduire un comportement non pas en le programmant “à la main” dans une machine, mais en concevant un système plus général capable d’apprendre à partir d’exemples.
 \subsection{Problématique : éthique et confidentialité}
 L'application du machine learning à des tâches relevant du domaine  médical, de la finance et de manière général appliqué à des données ``sensibles'' nécessite non seulement une grande précision des prédictions mais aussi de porter un intérêt particulier au questions de confidentialité et de sécurité. Les aspects légaux et ethics peuvent représenter un frein à l'application de solution machine larning directement sur les données du \textit{cloud}.\\
 \subsection{Objectif du stage}
@@ -298,14 +301,14 @@ Le clustering consiste à regrouper les données en groupes homogènes appelés 
 Il est devenu possible de déléguer l'exécution d'un algorithme d'apprentissage à un service informatique tout en conservant la confidentialité des données. \newline
 Parmis les travaux qui ont vu le jour  :\newline
 \textbf{\textit{Cryptonets \cite{1gilad2016cryptonets} }} :  \newline
-Gilad-Bachrach et al. ont mis au point une méthode pour convertir des réseaux de neurones entrainés à des réseaux pouvant être appliqués à des données encryptées et appelés Cryptonets \cite{1gilad2016cryptonets}.
+Gilad-Bachrach et al. ont mis au point une méthode pour convertir des réseaux de neurones entrainés à des réseaux pouvant être appliqués à des données encryptées et appelés Cryptonets .
 De tels réseaux permettent au détenteur de données de les envoyer sous forme chiffrée à un opérateur extérieur basé sur le cloud.\\
 L'opérateur n'ayant pas acces a la clé de déchiffrement, la confidentialité des données est assurée.
-L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchiffrement des données qui peut alors déchiffrer la prédiction. De cette manière, l'opérateur du cloud n'a pas d'information exploitable ni sur les données brutes ni sur les prédictions. Cette chaine d'actions est représentée sur la figure \cite{delahaye_PLS}. \\
+L'opérateur renvoie une prédiction chiffré au détenteur de la clé de déchiffrement des données qui peut alors déchiffrer la prédiction. De cette manière, l'opérateur du cloud n'a pas d'information exploitable ni sur les données brutes ni sur les prédictions. Cette chaine d'actions est représentée sur la figure . 
 Gilad-Bachrach et al.  ont appliqué leurs Crytonets sur le au jeu de donné MNIST (dataset standard et historique en machine learning composé de chiffres manuscrits).
 Les CryptoNets
 on the MNIST optical character recognition tasks. CryptoNets achieveIls ont obtenu une précision de 99\% pour une vitesse de 51000 prédiction par heure sur un simple PC. Les Cryptonets sont donc des candidats idéaux pour de la prédiction le calcul privée, haute précision et haut débit.\textit{ \cite{dowlin2017manual} } :\newline
-\textbf{\textit{Biomedical application \cite{1gilad2016cryptonets} }} :  \newline
+\textbf{\textit{Biomedical application \cite{dowlin2017manual} }} :  \newline
 Dans cette application on trouve la mise en oeuvre du modèle  regression logistque sur des données médicales  chiffrées(le fonctionnement de ce modèle sera détaillé dans la suite de ce rapport). ce travail a pour objectif de prédire l'état de santé des patients tout en preservant l'anonymat sur leurs dossiers medicals.\newline
 Le modèle a été entrainé sur des données claires afin de constituer les paramètres du modèle, ensuite de prédire sur des données chiffrées en utilisant une approximation de la fonction sigmoid (developement de taylor). 
 
