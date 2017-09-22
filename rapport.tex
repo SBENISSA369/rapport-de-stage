@@ -422,7 +422,7 @@ Toutes les opérations sont définies dans une classe Evaluator\newline
   \subsubsection{Implémentation de stochastic gradient descent : \cite{code_HE_lr}}: 
   Dans cette partie le travail demandé est d'implémenter l'algorithme cité dans la partie $4.1$ avec des données chiffrées en utilisant les fonctions de chiffrément homomorphe définie dans SEAL. \newline 
   Le but de cette implementation est d'évaluer la performance du modèle obtenu a partir des données chiffrées et de le comparer au niveau des différents paramètres avec le modèle obtenu a partir des données clairs.\newline
-  Parmis les paramaètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
+  Parmis les paramètres qu'il faut prendre en compte pour évaluer l'éfficacité d'un modèle en machine learning c'est la fonction d'erreur(loss en anglais).\newline  
   \subsubsection{Problèmes}
   Parmis les problèmes que j'ai rencontré pendant l'implementation de l'algorithme  sur les données chiffrées c'est qu'on un paramètre associé a chaque texte chiffrées pendant sa création (budget de noise), au début il est initialisé selon le paramètres qu'on choisit pour notre cryptosystème  et après chaque opération sur le texte chiffré la valeur diminue et quand il atteint la valeur 0 le texte chiffré devient indéchiffrable donc la solution est de savoir controler ce paramètre.
   \subsubsection{Solution}
