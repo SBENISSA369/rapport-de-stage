@@ -16,9 +16,6 @@
    %========================================
 
 \title{Application de chiffrement homomorphe à l'apprentissage automatique}
-
-% A subtitle is optional and this may be deleted
-    \subtitle{Optional Subtitle}
     \author{BENISSA Sami \\
       Université Paris 8\\
     Master Mathématiques fondamentales pour la protection de l'information}
@@ -46,11 +43,9 @@
 \begin{frame}
   \titlepage
 \end{frame}
-
 \begin{frame}{Déroulement}
   \tableofcontents
- 
-\end{frame}
+ \end{frame}
 
 \section{Présentation de l'entreprise}
 
@@ -74,150 +69,45 @@
     }
 \end{itemize}
 \end{frame}
-%\\\\\\\\\\\\\\\\\\\////////////////////
-
- %/////////////////NEW SLIDE\\\\\\\\\\\\\\\\\\
-  
-
-\section{Introduction}
-
-
-%//////////////////////NEW SLIDE\\\\\\\\\\\\\\\\\
-%\subsection{Contexte : Big data et Intelligence Artificielle}
-
+ \section{Introduction}
 \begin{frame}{Introduction}
 \begin{block}{Contexte}
-Big data et Intelligence Artificielle
+\begin{itemize}
+	\item{L'explosion du volume de données sur internet.}
+	\item{l'être humain est devenu incapable de traiter et analyser ces données.}
+	\item{nécessité de confier cette mission à la machine.}
+\end{itemize}
 \end{block}
-
-%\subsection{Problématique : Ethique et confidentialité}
-
 \begin{block}{Problématique}
-Ethique et confidentialité.
+\begin{itemize}
+	\item{Besoin de garantir la confidentialité de données sensibles.}
+	\end{itemize}
 \end{block}
-
-%\subsection{Objectifs du stage}
-
 \begin{block}{Objectif du stage}
 Concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.
 \end{block}
 \end{frame}
-
-%
-%%%
 \section{Etat de l'art}
-  
-%%%  
-
-%////////////////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\
-
-  \begin{frame}{Etat de l'art}
-
-    \begin{itemize}
-  \item {
-    Cryptographie
-  }
-  \item {
-    ML
-  }
-    \item {
-    Cryptographie + ML
-  }
-  \end{itemize}
-\end{frame}
-
   \subsection{Cryptographie}
-  
-  %////////////////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\
-  %Chiffrement partiellement homomorphe définition
   \begin{frame}{Cryptographie}
-
     \begin{itemize}
-    \item<1-> {
-      Chiffrement partiellement homomorphe : Définition :\\
-      \uncover<2->{Si on considère $C$ un cryptosystème,} \\
-
-     \begin{itemize}[label={}]
-           \item[]<3-> {
-             $(x_1, x_2, ............, x_n)$ , l'ensemble de messages clairs, 
-           }
-           \item[]<4-> {  
-             $(c_1, c_2, ..............., c_n)$ , l'ensemble des messages chiffrés
-           }
-           \item[]<5-> {
-        et $ F$ une fonction de chiffrement telle que:\\
-        $$F(x_n) = c_n$$
-           }\\
-     \end{itemize}
-
-             \uncover<6-> {On dit que $C$ est homomorphique par rapport a l'addition si : \\
-               $$F(x_1) + F(x_2) = F(x_1 + x_2).$$
-                           }\\
-      \uncover<7-> {On dit que $C$ est homomorphique par rapport a la multiplication si : \\
- $$F(x_1) * F(x_2) = F(x_1 * x_2).$$}
-          }   
-    
+    \item{Chiffrement partiellement homomorphe :\newline
+       Un cryptosystème est dit partiellement homomorphe s’il commute avec certaines lois mathématiques sur l’espace des messages chiffrés.
+       Parmis les cryptosystèmes partiellement homomorphe on trouve :\newline
+       \begin{itemize}
+       \item{RSA : commute avec la multiplication .}
+       \item{Paillier : commute avec l'addition .}
+       \item{El Gamel : commute avec la multiplication .}
+   \end{itemize}
+      }
+      \item{Chiffrement complètement homomorphe :\newline
+      Un cryptosystème est dit totalement homomorphe s’il commute avec toutes les lois sur l’espace des messages chiffrés.
+      }
   \end{itemize}
+      En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
+
 \end{frame}
-
-  %\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
-
-
-   %////////////////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\
-  %RSA, description
-  \begin{frame}{Cryptographie}
-
-    \begin{itemize}
-    \item<1-> {
-      RSA :\newline
-      soient :\newline
-      $pk = (n,e)$ :le clé publique.\newline 
-      $sk = d$ : la clé secrète de cryptosystème.\newline
-      $Enc$ : le fonction de chiffrement,\newline
-      $Dec$ : la fonction de déchiffrement.\newline
-      aon prend $c_1 = Enc(m_1) = m_1^e \;mod\;n$ et $c_2 = Enc(m_2) =m_2^e \;mod\;n$ 
-              }
-    \end{itemize}
-
-  \end{frame}
-
-
-  
- %\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////
-
-
-   %////////////////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\
-  %Paillier, description
-  \begin{frame}{Cryptographie}
-
-    \begin{itemize}
-    \item<1-> {
-      Paillier :
-              }
-    \end{itemize}
-
-  \end{frame}
-
-
-  %//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %Crypto completement homomorphe
-  \begin{frame}{Cryptographie}
-
-    \begin{itemize}
-    \item<1-> {
-      Chiffrement complètement homomorphe\\
-      \uncover<2->{Un cryptosystème est dit homomorphe si une opération algébrique effectuée sur les chiffrés équivaut à une opération algébrique sur les clairs. En particulier, si le cryptosystème est stable pour un nombre arbitraire d'additions et de multiplications, il est dit complètement homomorphe.} \\
-              }
-    
-  \end{itemize}
-  \end{frame}
-  %\\\\\\\\\\\\\\\\\\\·/////////////////////
-  
-
-  %//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %Réseaux Euclidiens
-  \begin{frame}{Cryptographie}
-
+ \begin{frame}{Cryptographie}
     \begin{itemize}
     \item<1-> {
       Réseaux Euclidiens : \\
@@ -237,13 +127,8 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
     
   \end{itemize}
   \end{frame}
-  %\\\\\\\\\\\\\\\\\\\·/////////////////////
-
-   %//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %SVP et CVP
   \begin{frame}{Cryptographie}
-
-    \begin{itemize}
+\begin{itemize}
     \item<1-> {
       \textbf{Shortest Vector Problem (SVP):}\\
       \uncover<2->{Etant donné une base $B$ d’un sous réseau $L$ de $Z^n$, trouver un vecteur non nul de $L$ le plus court possible pour la norme euclidienne.}\\
@@ -270,54 +155,26 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
     }
     \end{itemize}
   \end{frame}
-
-  %//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %Gentry
-  \begin{frame}{Cryptographie}
-
-    \begin{itemize}
-    \item<1-> {
-      \textbf{Cryptosystème de Gentry}\
-      \uncover<2->{A toi de remplir} \\
-              }
-  \end{itemize}
-  \end{frame}
-  %\\\\\\\\\\\\\\\\\\\·/////////////////////
-  
-%//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %BGV
-  \begin{frame}{Cryptographie}
-
-    \begin{itemize}
-    \item<1-> {
-      \textbf{Le cryptosystème Brakerski-Gentry-Vaikunthanathan (BGV)}\
-      \uncover<2->{A toi de remplir} \\
-              }
-  \end{itemize}
-  \end{frame}
-  %\\\\\\\\\\\\\\\\\\\·/////////////////////
-
-
   \subsection{Apprentissage automatique}
  
-%//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %ML
   \begin{frame}{Apprentissage automatique}
-
-    \begin{itemize}
-    \item<1-> {
-      \textbf{Apprentissage automatique \textit{Machine Learning - ML}}\\
-      \uncover<2->{A toi de remplir} \\
-              }
+  \begin{block}{Apprentissage automatique}
+  \begin{itemize}
+    \item{Discipline consacrée à l'analyse de données.}
+  	\item{Permet de créer des connaissances automatiques a partir de données brutes.}
+    \item{Consciste à la mise en place des algorithmes qui vont êre exploiter pour prendre des décisions.}
   \end{itemize}
-  \end{frame}
-  %\\\\\\\\\\\\\\\\\\\·/////////////////////
-
+  \end{block}
+  \begin{figure}[h!]\begin{center}
+            \includegraphics[width=7.5cm]{m_learning.png}
+            \caption{mode de fonctionnement d'un modèle en machine learning.}
+          \end{center}
+        \end{figure}
+    \end{frame}
   \subsection{Cryptographie + ML}
+  
 
-  %//////////////NEW SLIDE\\\\\\\\\\\\\\\\\\\\\
-  %BGV
-  \begin{frame}{Apprentissage automatique}
+  \begin{frame}{Cryptographie + ML}
 
     \begin{itemize}
     \item<1-> {
@@ -325,8 +182,9 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
       \uncover<2->{Pour certaines données sensibles, il n'est pas pensable d'effectuer des calculs sur le cloud. Pour pallier à ce problème de confidentialité et de sécurité, il est nécessaire de combiner ML et crypto} \\
       \uncover<3->{
         \begin{figure}[h!]\begin{center}
-            \includegraphics[width=5cm]{SchemaM1.pdf}
-          \end{center}
+         \includegraphics[width=8cm]{SchemaM1.pdf}
+            
+            \end{center}
         \end{figure}
       }
               }
@@ -335,7 +193,7 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
 \section{Applications}
 \subsection{Stochastic Gradient Descent(SGD)}
   \begin{frame}{Stochastic Gradient Descent(SGD)}
-La descente de gradient stochastique, en machine learning elle premet de minimiser la fonction d'erreur, appliquable sur toutes fonction differentiables.\newline
+La descente de gradient stochastique, en machine learning premet de minimiser la fonction d'erreur, appliquable sur toutes fonction differentiables.\newline
 \begin{block}{Algorithme}
 \begin{enumerate}
 	\item{choisir un point $x_0$.}
@@ -368,7 +226,7 @@ La descente de gradient stochastique, en machine learning elle premet de minimis
  \begin{frame}{Approximation et résultats}
  Dans la regression logistique on utilise la fonction sigmoid définie par :\newline
  $$f(x)=\dfrac{1}{1 + exp(-x)}$$
- Comme dans la bibliothèque SEAL la fonction exponentielle n'a pas été définie on a dû l'approximer avec :\newline
+ Comme dans la bibliothèque SEAL la fonction exponentielle n'est pas définie on a dû l'approximer avec :\newline
 \begin{enumerate}
 	\item{Developpement de Taylor}
 	\item{Approximation avec piecewise function}
@@ -381,7 +239,6 @@ On a :
 \newcommand\omicron{o}
  $$\dfrac{1}{1+e^{-x}} = \dfrac{1}{2} + \dfrac{1}{4}x - \dfrac{1}{48}x^3 + \dfrac{1}{480}x^5 - \dfrac{1}{80640}x^7 + \omicron(x^9)$$
 Dans un premier temps on a essayé de faire une approximation avec le developpement de Taylor, sauf qu'avec la fonction puissance (sous le nom exponentiate dans SEAL) on a un bruit qui s'accumule, et le texte chiffré devient vite indéchiffrable. 
-
 \end{frame}
 \subsubsection{Approximation avec piecewise function}
 \begin{frame}{Approximation avec piecewise function}
@@ -400,8 +257,7 @@ Avec cette méthode on a réussi a avoir une fonction d'erreur (loss) qui conver
              \includegraphics[width=4cm]{loss_logistic_regression.png}
              \end{center}
              \end{figure}
-
- \end{frame}
+\end{frame}
 \subsubsection{Fonction carré}
 \begin{frame}{Fonction carré}
 \end{frame}
@@ -411,8 +267,6 @@ Avec cette méthode on a réussi a avoir une fonction d'erreur (loss) qui conver
 	\textcolor{orange}{\textbf{\textit{Merci de votre attention.}}}
 	\end{center}
 \end{frame}
-
-
 \end{document}
 
 
