@@ -14,7 +14,7 @@
     \usepackage{mathrsfs}
     \usepackage{verbatim}
    %========================================
-
+%=====================================================================================================
 \title{Application de chiffrement homomorphe à l'apprentissage automatique}
     \author{BENISSA Sami \\
       Université Paris 8\\
@@ -36,10 +36,7 @@
     \tableofcontents[currentsection,currentsubsection]
   \end{frame}
 }
-
-
 \begin{document}
-
 \begin{frame}
   \titlepage
 \end{frame}
@@ -69,6 +66,7 @@
     }
 \end{itemize}
 \end{frame}
+%////////////SLIDE2\\\\\\\\\\\\\\\\\\
  \section{Introduction}
 \begin{frame}{Introduction}
 \begin{block}{Contexte}
@@ -84,9 +82,12 @@
 	\end{itemize}
 \end{block}
 \begin{block}{Objectif du stage}
-Concevoir une application d'apprentissage automatique a partir des données chiffrées en utilisant un schéma de chiffrement homomorphe.
+\begin{itemize}
+\item{Couplage d'apprentissage automatique et chiffrement homomorphe.}
+\end{itemize}
 \end{block}
 \end{frame}
+%////////////SLIDE1\\\\\\\\\\\\\\\\\\
 \section{Etat de l'art}
   \subsection{Cryptographie}
   \begin{frame}{Cryptographie}
@@ -102,11 +103,16 @@ Concevoir une application d'apprentissage automatique a partir des données chif
       }
       \item{Chiffrement complètement homomorphe :\newline
       Un cryptosystème est dit totalement homomorphe s’il commute avec toutes les lois sur l’espace des messages chiffrés.
+      \begin{itemize}
+      	\item{Gentry(2009) : schéma complètement homomorphe basé sur les réseaux euclidiens.}
+      \end{itemize}
       }
   \end{itemize}
-      En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
+
+     % En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
 
 \end{frame}
+%////////////SLIDE1\\\\\\\\\\\\\\\\\\
  \begin{frame}{Cryptographie}
     \begin{itemize}
     \item<1-> {
@@ -127,6 +133,7 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
     
   \end{itemize}
   \end{frame}
+  %////////////SLIDE1\\\\\\\\\\\\\\\\\\
   \begin{frame}{Cryptographie}
 \begin{itemize}
     \item<1-> {
@@ -155,22 +162,26 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
     }
     \end{itemize}
   \end{frame}
+  %////////////SLIDE1\\\\\\\\\\\\\\\\\\
   \subsection{Apprentissage automatique}
  
   \begin{frame}{Apprentissage automatique}
   \begin{block}{Apprentissage automatique}
   \begin{itemize}
     \item{Discipline consacrée à l'analyse de données.}
-  	\item{Permet de créer des connaissances automatiques a partir de données brutes.}
-    \item{Consciste à la mise en place des algorithmes qui vont êre exploiter pour prendre des décisions.}
+  	\item{Permet d'extraire de l'information à partir d'un grand volume de données brutes.}
+    \item{Consciste à la mise en place des algorithmes qui vont être exploités	 pour la prise de décisions.}
   \end{itemize}
   \end{block}
   \begin{figure}[h!]\begin{center}
-            \includegraphics[width=7.5cm]{m_learning.png}
-            \caption{mode de fonctionnement d'un modèle en machine learning.}
-          \end{center}
+  \caption{application d'imagerie médicale en machine learning}
+         \includegraphics[width=8cm]{brain.png}
+            
+            \end{center}
         \end{figure}
+
     \end{frame}
+    %////////////SLIDE1\\\\\\\\\\\\\\\\\\
   \subsection{Cryptographie + ML}
   
 
@@ -190,10 +201,12 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
               }
   \end{itemize}
   \end{frame}
+  %////////////SLIDE1\\\\\\\\\\\\\\\\\\
 \section{Applications}
 \subsection{Stochastic Gradient Descent(SGD)}
   \begin{frame}{Stochastic Gradient Descent(SGD)}
-La descente de gradient stochastique, en machine learning premet de minimiser la fonction d'erreur, appliquable sur toutes fonction differentiables.\newline
+Descente de gradient stochastique : technique de minimisation de la fonction d'erreur {\tiny appliquable sur toutes fonction differentiables}.\newline
+
 \begin{block}{Algorithme}
 \begin{enumerate}
 	\item{choisir un point $x_0$.}
@@ -205,23 +218,29 @@ La descente de gradient stochastique, en machine learning premet de minimiser la
 	}
 \end{enumerate}
 \end{block}
+%\begin{figure}[h!]\begin{center}
+ %        \includegraphics[width=8cm]{sgd.png}
+%\end{center}
+%\end{figure}
 \end{frame}
-\subsection{Schéma explicative}
-  \begin{frame}{Schéma explicative}
-             \begin{figure}[h!]\begin{center}
-             \includegraphics[width=10cm]{SGD.pdf}
-             \end{center}
-             \end{figure}
-        \end{frame}
-  \begin{frame}{Schéma explicative}
-        \begin{enumerate}
-    		\item {On chiffre les données sur lesquels on applique SGD (jeux de données, modèle) }
-  			\item {On applique SGD sur les données, on met a jour le modèle, on calcul la fonction d'erreur après chaque itération. }
-  			\item {Après un certain nombre d'itération on renvoit le modèle au déteneur de la clé secrète pour qu'il applique la fonction de 			       déchiffrement et la chiffrement pour repartir avec des données avec un bruit moins élevé. }
-    		\item { A la fin on renvois le modèle chiffrés et on applique notre fonction de prédiction .}
+%////////////SLIDE1\\\\\\\\\\\\\\\\\\
+\subsection{Schéma explicatif}
+  \begin{frame}{Schéma explicatif}
+  \begin{figure}
+   \begin{minipage}[c]{.44\linewidth}
+      \includegraphics[width=8cm]{SGD.pdf}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.48\linewidth}
+      \begin{enumerate}
+    		\item {Chiffrage : jeu de données + modèle}
+  			\item {Application SGD sur les données, mise à jour du modèle, calcul de la fonction d'erreur après chaque itération. }
+  			\item {Renvoi du modèle au déteneur de la clé secrète qui déchiffre puis rechiffre le modèle et il le renvois {\tiny(\textit{3+4+5 sur la figure}  )} }
+    		\item {Finalement : renvoi du modèle chiffrés et application à la fonction de prédiction .}
 		\end{enumerate}
-  \end{frame}
-
+   \end{minipage}
+\end{figure}
+             \end{frame}
+%////////////SLIDE1\\\\\\\\\\\\\\\\\\
 \subsection{Approximation et résultats}
  \begin{frame}{Approximation et résultats}
  Dans la regression logistique on utilise la fonction sigmoid définie par :\newline
@@ -233,6 +252,7 @@ La descente de gradient stochastique, en machine learning premet de minimiser la
 	\item{Fonction carré}
 \end{enumerate}
 \end{frame}
+%////////////SLIDE1\\\\\\\\\\\\\\\\\\
 \subsubsection{Developpement de Taylor}
 \begin{frame}{Developpement de Taylor}
 On a :
@@ -252,7 +272,7 @@ f(x)=
 1 & \mbox{si} & x>2
 \end{array}\right.
 \end{equation}
-Avec cette méthode on a réussi a avoir une fonction d'erreur (loss) qui converge de la même manière comme si on a travaillé avec des données non chiffrées comme il le montre la figure suivante :
+Avec cette méthode on a réussi a avoir une fonction d'erreur qui converge de la même manière comme si on a travaillé avec des données non chiffrées comme il le montre la figure suivante :
 \begin{figure}[h!]\begin{center}
              \includegraphics[width=4cm]{loss_logistic_regression.png}
              \end{center}
