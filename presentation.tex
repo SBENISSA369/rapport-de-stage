@@ -108,60 +108,23 @@
       \end{itemize}
       }
   \end{itemize}
-
-     % En 2009, Craig Gentry propose dans le cadre de sa thèse un nouveau schéma complètement homomorphe basé sur des problèmes concernant les réseaux euclidiens.
+\end{frame}
+\begin{frame}{Cryptographie}
+\begin{block}{Cryptosystème basée sur les réseaux euclidiens }
+  \begin{itemize}
+    \item{Le cryptosystème Brakerski-Gentry-Vaikunthanathan (HElib).}
+    \item{Le cryptosystème de Fan et Vercauteren (SEAL).}
+  \end{itemize}
+  \end{block}
+\begin{block}{SEAL : Simple Encrypted Arithmetic Library }
+  \begin{itemize}
+    \item{Bibliothèque de chiffrérement homomorphe.}
+    \item{Open source.}
+    \item{C++.}
+  \end{itemize}
+  \end{block}
 
 \end{frame}
-%////////////SLIDE1\\\\\\\\\\\\\\\\\\
- \begin{frame}{Cryptographie}
-    \begin{itemize}
-    \item<1-> {
-      Réseaux Euclidiens : \\
-      \uncover<2->{ Un réseau euclidien $L$ est un sous-groupe discret additif de $R^n$.\\
-      }
-      \uncover<3->{ une base $b= (b_1,b_2,...........,b_n)$ de $L$ dans $R^n$ est un ensemble de $n$ vecteurs linéairement indépendants.\\
-        Les combinaisons linéaires entières des vecteurs de cette base forment $L$.
-$$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
-      }
-      \uncover<4->{\begin{figure}[h!]\begin{center}
-                   \includegraphics[width=3cm]{reseau.jpg}
-                   \caption{Réseau euclidien de dimension 3 .}
-                   \end{center}
-                   \end{figure}
-      }
-      }
-    
-  \end{itemize}
-  \end{frame}
-  %////////////SLIDE1\\\\\\\\\\\\\\\\\\
-  \begin{frame}{Cryptographie}
-\begin{itemize}
-    \item<1-> {
-      \textbf{Shortest Vector Problem (SVP):}\\
-      \uncover<2->{Etant donné une base $B$ d’un sous réseau $L$ de $Z^n$, trouver un vecteur non nul de $L$ le plus court possible pour la norme euclidienne.}\\
-      \uncover<3->{
-      \begin{figure}[h!]\begin{center}
-          \includegraphics[width=3cm]{svp.png}
-          \caption{En bleu la base donnée du réseau, en rouge le vecteur le plus court.}
-    %\label{fig:svp}
-        \end{center}
-      \end{figure}
-      }
-    }
-    \item<4->{
-      \textbf{Closest Vector Problem (CVP):}\\
-      \uncover<5->{Etant donné une base $B$ d’un réseau $L$ de $Z^n$ et un vecteur $v \in Q^n$ , trouver le vecteur de $L$ le plus proche de $v$ pour la norme euclidienne.}\\
-      \uncover<6->{
-        \begin{figure}[h!]\begin{center}
-            \includegraphics[width=3cm]{cvp.png}
-            \caption{En bleu la base donnée du réseau, en vert le vecteur donné,en rouge le vecteur le plus proche du vecteur vert appartenant au réseau.}
-            \label{fig:cvp}
-          \end{center}
-        \end{figure}
-      }
-    }
-    \end{itemize}
-  \end{frame}
   %////////////SLIDE1\\\\\\\\\\\\\\\\\\
   \subsection{Apprentissage automatique}
  
@@ -170,16 +133,11 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
   \begin{itemize}
     \item{Discipline consacrée à l'analyse de données.}
   	\item{Permet d'extraire de l'information à partir d'un grand volume de données brutes.}
-    \item{Consciste à la mise en place des algorithmes qui vont être exploités	 pour la prise de décisions.}
+    \item{Consiste à la mise en place des algorithmes qui vont être exploités	 pour la prise de décisions.}
+    \item{Phase d'apprentissage / phase de prédiction.}
+    \item{Classification / Régression.}
   \end{itemize}
   \end{block}
-  \begin{figure}[h!]\begin{center}
-  \caption{application d'imagerie médicale en machine learning}
-         \includegraphics[width=8cm]{brain.png}
-            
-            \end{center}
-        \end{figure}
-
     \end{frame}
     %////////////SLIDE1\\\\\\\\\\\\\\\\\\
   \subsection{Cryptographie + ML}
@@ -201,8 +159,22 @@ $$L = \{x\in R^n, tq\quad x = \sum_{i=1}^{n} x_ib_i,\quad x_i\in Z\}$$
               }
   \end{itemize}
   \end{frame}
+  \begin{frame}{Cryptographie + ML}
+  \textbf{\textit{Cryptonets .}}\newline
+  \begin{itemize}
+    \item{Réseau des neurones.}
+    \item{MNIST dataset(chiffres manuscrits).}
+    \item{Phase de prédiction avec de données chiffrées.}
+    \end{itemize}
+\textbf{\textit{Bioinformatics application .}}\newline
+  \begin{itemize}
+    \item{Régression logistique.}
+    \item{Données médicales.}
+    \item{Prédiction (Diabète) avec de données chiffrées.}
+  \end{itemize}
+  \end{frame}
   %////////////SLIDE1\\\\\\\\\\\\\\\\\\
-\section{Applications}
+\section{Apprentissage automatique à partir de données chiffrées}
 \subsection{Stochastic Gradient Descent(SGD)}
   \begin{frame}{Stochastic Gradient Descent(SGD)}
 Descente de gradient stochastique : technique de minimisation de la fonction d'erreur {\tiny appliquable sur toutes fonction differentiables}.\newline
@@ -227,19 +199,22 @@ Descente de gradient stochastique : technique de minimisation de la fonction d'e
 \subsection{Schéma explicatif}
   \begin{frame}{Schéma explicatif}
   \begin{figure}
-   \begin{minipage}[c]{.44\linewidth}
-      \includegraphics[width=8cm]{SGD.pdf}
+   \begin{minipage}[c]{.41\linewidth}
+      \includegraphics[width=8cm]{SGD_.pdf}
    \end{minipage} \hfill
-   \begin{minipage}[c]{.48\linewidth}
+   \begin{minipage}[c]{.51\linewidth}
       \begin{enumerate}
-    		\item {Chiffrage : jeu de données + modèle}
-  			\item {Application SGD sur les données, mise à jour du modèle, calcul de la fonction d'erreur après chaque itération. }
-  			\item {Renvoi du modèle au déteneur de la clé secrète qui déchiffre puis rechiffre le modèle et il le renvois {\tiny(\textit{3+4+5 sur la figure}  )} }
-    		\item {Finalement : renvoi du modèle chiffrés et application à la fonction de prédiction .}
+    		\item {Chiffrement : jeu de données + modèle.}
+  			\item {Appliquer SGD sur les données.}
+  			\item {Renvoi du modèle à Alice .}
+        \item {Alice chiffre et déchiffre le modèle .}
+        \item {Renvoi du modèle chiffré à Bob .}
+        \item {renvoi du modèle chiffrés.}
+        \item {Appliquer la fonction de prédiction.}
 		\end{enumerate}
    \end{minipage}
 \end{figure}
-             \end{frame}
+\end{frame}
 %////////////SLIDE1\\\\\\\\\\\\\\\\\\
 \subsection{Approximation et résultats}
  \begin{frame}{Approximation et résultats}
@@ -248,7 +223,7 @@ Descente de gradient stochastique : technique de minimisation de la fonction d'e
  Comme dans la bibliothèque SEAL la fonction exponentielle n'est pas définie on a dû l'approximer avec :\newline
 \begin{enumerate}
 	\item{Developpement de Taylor}
-	\item{Approximation avec piecewise function}
+	\item{Approximation avec une function linéaire par morceau}
 	\item{Fonction carré}
 \end{enumerate}
 \end{frame}
@@ -260,9 +235,9 @@ On a :
  $$\dfrac{1}{1+e^{-x}} = \dfrac{1}{2} + \dfrac{1}{4}x - \dfrac{1}{48}x^3 + \dfrac{1}{480}x^5 - \dfrac{1}{80640}x^7 + \omicron(x^9)$$
 Dans un premier temps on a essayé de faire une approximation avec le developpement de Taylor, sauf qu'avec la fonction puissance (sous le nom exponentiate dans SEAL) on a un bruit qui s'accumule, et le texte chiffré devient vite indéchiffrable. 
 \end{frame}
-\subsubsection{Approximation avec piecewise function}
-\begin{frame}{Approximation avec piecewise function}
-Dans une deuxieme tentative on a approximé la fonction sigmoid avec la piecewise function qui est définie par :\newline
+\subsubsection{Approximation avec une function linéaire par morceau}
+\begin{frame}{Approximation avec une function linéaire par morceau}
+Dans une deuxieme tentative on a approximé la fonction sigmoid avec une fonction linéaire par morceau  qui est définie par :\newline
  \begin{equation}
 f(x)=
 \left\lbrace
